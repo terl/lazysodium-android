@@ -6,16 +6,16 @@
   
 Lazysodium for Android is a JNA wrapper around a **near complete** implementation of the [Libsodium](https://github.com/jedisct1/libsodium) cryptography library, providing developers with a **smooth and effortless** experience.   
   
+[![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
  
   
 ## Get started  
-  
 This section will help you get started with Lazysodium quickly (and with utmost laziness).  
   
 ### Requirements  
 Lazysodium for Android requires:  
   
-* Android 16 or higher. May work on lower versions, not tested against lower versions.
+* Android 16 or higher. May work on even lower versions - just not tested Lazysodium on them.
 * Gradle 4.7 or higher (if compiling and building).  
 * No effort whatsoever.  
   
@@ -23,14 +23,13 @@ Lazysodium for Android requires:
 ### Dependency 
 Substitute `LATEST_JNA_VERSION_NUMBER` for the [latest JNA version](https://mvnrepository.com/artifact/net.java.dev.jna/jna). Substitute `VERSION_NUMBER` with the number provided in the following button:  
 
-[Insert button here when ready]  
+[ ![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
 
 ##### Gradle  
   
 ```groovy  
 dependencies {  
     implementation "com.goterl.lazycode:lazysodium-android:VERSION_NUMBER"
-    implementation "net.java.dev.jna:jna:LATEST_JNA_VERSION_NUMBER@aar"
 }  
 ```
 
