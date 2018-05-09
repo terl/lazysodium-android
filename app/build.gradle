@@ -1,0 +1,46 @@
+/*
+ * Copyright (c) Terl Tech Ltd • 09/05/18 18:38 • goterl.com
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v2.0. If a copy of the MPL was not distributed with this
+ * file, you can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+plugins {
+    id 'com.android.library'
+}
+
+ext {
+    artifactId = "lazysodium-java"
+    groupId = "com.goterl.lazycode"
+    version = '0.0.1'
+    description = "Lazysodium (Java) makes it effortless for Java " +
+            "developers to get started with Libsodium's cryptography."
+}
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName project.ext.version
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets.main {
+        jni.srcDirs = []
+        jniLibs.srcDirs = ['src/main/libs']
+    }
+}
+
+dependencies {
+    implementation 'net.java.dev.jna:jna:4.5.1@aar'
+    implementation 'com.goterl.lazycode:lazysodium-java:0.3.4'
+}
