@@ -17,7 +17,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '0.1.6'
+    version = '0.1.7'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
 }
@@ -28,7 +28,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 8
+        versionCode 9
         versionName project.ext.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -41,12 +41,19 @@ android {
     sourceSets.main {
         jni.srcDirs = []
         jniLibs.srcDirs = ['src/main/jniLibs']
+
+        java.srcDir("../lazysodium-java/src/main")
     }
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2", {
+        exclude group: "com.android.support", module: "support-annotations"
+    })
+    testImplementation 'junit:junit:4.12'
     implementation 'net.java.dev.jna:jna:4.5.1@aar'
-    implementation 'com.goterl.lazycode:lazysodium-java:0.3.4'
+    implementation project(path: ':lazysodium-java')
 }
 
 

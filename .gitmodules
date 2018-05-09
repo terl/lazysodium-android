@@ -1,0 +1,3 @@
+[submodule "lazysodium-java"]
+	path = lazysodium-java
+	url = git@github.com:terl/lazysodium-java.git
