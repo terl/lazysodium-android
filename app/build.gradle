@@ -46,6 +46,10 @@ android {
     }
 }
 
+subprojects {
+    tasks.withType(Javadoc).all { enabled = false }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2", {
