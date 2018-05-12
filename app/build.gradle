@@ -17,7 +17,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '0.2.0'
+    version = '0.2.1'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
 }
@@ -26,7 +26,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 10
         versionName project.ext.version
