@@ -22,7 +22,25 @@ Lazysodium for Android requires:
   
 
 ### Add as dependency 
-To add Lazysodium for Android into your project, substitute `LATEST_JNA_VERSION_NUMBER` for the [latest JNA version](https://mvnrepository.com/artifact/net.java.dev.jna/jna). Then, substitute `VERSION_NUMBER` with the number provided in the following button:  
+
+If you didn't know already, all Java and Android libraries are hosted on a central repository. Lazysodium is hosted on [Bintray](https://bintray.com/terl/lazysodium-maven). This is important because you need to configure your build tool to pull and cache Lazysodium's packages from Bintray. If you're using Gradle, the process is as simple as adding a few lines to your top-level `build.gradle` file.
+
+```groovy
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        
+        // Add this line here!
+        maven {
+            url  "https://dl.bintray.com/terl/lazysodium-maven"
+        }
+    }
+}
+```
+
+
+Now that you've added the above, please add Lazysodium for Android into your project. Substitute `LATEST_JNA_VERSION_NUMBER` for the [latest JNA version](https://mvnrepository.com/artifact/net.java.dev.jna/jna). Then, substitute `VERSION_NUMBER` with the number provided in the following button:  
 
 [ ![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
 
@@ -54,7 +72,7 @@ jniLibs.srcDirs = ['src/main/jniLibs']
 * You need to remember that instead of JNA for Java you need JNA for Android. I.e. `implementation 'net.java.dev.jna:jna:JNA_VERSION_NUMBER@aar'`, otherwise the SecurityManager would complain if you performed a `Native.loadLibrary`.
 * You can provide a path to your own `libsodium.so` using `Sodium.loadAndroid(path)`.
   
-## More information  
+## Where can I find more information?
 As Lazysodium for Android is just [Lazysodium for Java](https://github.com/terl/lazysodium-java) but packaged for Android, please refer to the [Lazysodium for Java](https://github.com/terl/lazysodium-java) project for more details on **contributions** and **documentation**.
 
 <br/>
