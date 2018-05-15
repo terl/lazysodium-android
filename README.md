@@ -1,10 +1,9 @@
-
-<p align="center"><img width="260" style="float: center;" style="display: inline;" src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/lazysodium.png" /></p>  
+<p align="center"><img width="260" style="float: center;" style="display: inline;" src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/lazysodium-plain.png" /></p>
   
   
 # Lazysodium for Android
   
-Lazysodium for Android is a JNA wrapper around a **near complete** implementation of the [Libsodium](https://github.com/jedisct1/libsodium) cryptography library, providing developers with a **smooth and effortless** experience.   
+Lazysodium is a **complete** Android implementation of the [Libsodium](https://github.com/jedisct1/libsodium) library that provides developers with a **smooth and effortless** cryptography experience.
   
 [![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
  
@@ -67,14 +66,17 @@ jni.srcDirs = []
 jniLibs.srcDirs = ['src/main/jniLibs']
 ```
 
-## Notes
-* Lazysodium for Android is just [Lazysodium for Java](https://github.com/terl/lazysodium-java) but instead of native libraries built for MacOS, Windows and Linux, Lazysodium for Android has native libraries built for Android in the `app/src/main/libs` folder. 
-* You need to remember that instead of JNA for Java you need JNA for Android. I.e. `implementation 'net.java.dev.jna:jna:JNA_VERSION_NUMBER@aar'`, otherwise the SecurityManager would complain if you performed a `Native.loadLibrary`.
-* You can provide a path to your own `libsodium.so` using `Sodium.loadAndroid(path)`.
-  
-## Where can I find more information?
+## Documentation + Usage
 As Lazysodium for Android is just [Lazysodium for Java](https://github.com/terl/lazysodium-java) but packaged for Android, please refer to the [Lazysodium for Java](https://github.com/terl/lazysodium-java) project for more details on **contributions** and **documentation**.
 
+
+## Notes
+Lazysodium for Android is just [Lazysodium for Java](https://github.com/terl/lazysodium-java) but instead of native libraries built for MacOS, Windows and Linux, Lazysodium for Android has native libraries built for Android in the `app/src/main/libs` folder. 
+
+You need to remember that instead of JNA for Java you need JNA for Android. I.e. `implementation 'net.java.dev.jna:jna:JNA_VERSION_NUMBER@aar'`, otherwise the SecurityManager would complain if you performed a `Native.loadLibrary`.
+
+You can provide a path to your own `libsodium.so` using `Sodium.loadAndroid(path)`.
+  
 <br/>
 <br />
   
