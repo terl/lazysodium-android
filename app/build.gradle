@@ -17,7 +17,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '1.0.1'
+    version = '1.0.2'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
 }
