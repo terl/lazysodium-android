@@ -24,6 +24,8 @@ Lazysodium for Android requires:
 
 If you didn't know already, all Java and Android libraries are hosted on a central repository. Lazysodium is hosted on [Bintray](https://bintray.com/terl/lazysodium-maven). This is important because you need to configure your build tool to pull and cache Lazysodium's packages from Bintray. If you're using Gradle, the process is as simple as adding a few lines to your top-level `build.gradle` file.
 
+#### Top level `build.gradle`
+
 ```groovy
 allprojects {
     repositories {
@@ -38,15 +40,21 @@ allprojects {
 }
 ```
 
+#### App level `build.gradle`
 
-Now that you've added the above, please add Lazysodium for Android into your project. Substitute `LATEST_JNA_VERSION_NUMBER` for the [latest JNA version](https://mvnrepository.com/artifact/net.java.dev.jna/jna). Then, substitute `VERSION_NUMBER` with the number provided in the following button:  
+Then, Substitute `LATEST_JNA_VERSION_NUMBER` for the [latest JNA version](https://mvnrepository.com/artifact/net.java.dev.jna/jna). Then, substitute `VERSION_NUMBER` with the number provided in the following button:  
 
 [ ![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
+
 
 ```groovy  
 dependencies {
     implementation "net.java.dev.jna:jna:LATEST_JNA_VERSION_NUMBER@aar"
     implementation "com.goterl.lazycode:lazysodium-android:VERSION_NUMBER@aar"
+    
+    // E.g
+    // implementation "net.java.dev.jna:jna:4.5.1@aar"
+    // implementation "com.goterl.lazycode:lazysodium-android:1.1.2@aar"
 }
 ```
 
