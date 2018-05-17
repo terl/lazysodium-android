@@ -58,32 +58,14 @@ dependencies {
 }
 ```
 
-## Building
-When you want to update and build this project for yourself, you first have to update the `lazysodium-java` project. The relevant line in the `build.gradle` file is `java { srcDir "../lazysodium-java/src/main" }` which tells this project to get the sources from the Lazysodium for Java project.
 
-```sh
-# Update Lazysodium for Java before you do anything first!
-cd lazysodium-java
-git pull
-```
-
-The `build.gradle` file also specifies where to find the native `libsodium.so` library:
-
-```
-jni.srcDirs = []
-jniLibs.srcDirs = ['src/main/jniLibs']
-```
-
-## Documentation + Usage
-As Lazysodium for Android is just [Lazysodium for Java](https://github.com/terl/lazysodium-java) but packaged for Android, please refer to the [Lazysodium for Java](https://github.com/terl/lazysodium-java) project for more details on **contributions** and **documentation**.
+## Getting started
+Please refer to the [Lazysodium for Java's Wiki](https://github.com/terl/lazysodium-java/wiki/Home) project for more details on getting started.
 
 
 ## Notes
-Lazysodium for Android is just [Lazysodium for Java](https://github.com/terl/lazysodium-java) but instead of native libraries built for MacOS, Windows and Linux, Lazysodium for Android has native libraries built for Android in the `app/src/main/libs` folder. 
-
-You need to remember that instead of JNA for Java you need JNA for Android. I.e. `implementation 'net.java.dev.jna:jna:JNA_VERSION_NUMBER@aar'`, otherwise the SecurityManager would complain if you performed a `Native.loadLibrary`.
-
-You can provide a path to your own `libsodium.so` using `Sodium.loadAndroid(path)`.
+1. Lazysodium for Android is just [Lazysodium for Java](https://github.com/terl/lazysodium-java) but instead of native libraries built for MacOS, Windows and Linux, Lazysodium for Android has native libraries built for Android in the `app/src/main/libs` folder. 
+2. You need to remember that instead of JNA for Java you need JNA for Android. I.e. `implementation 'net.java.dev.jna:jna:JNA_VERSION_NUMBER@aar'`, otherwise the SecurityManager would complain if you performed the JNA method `Native.loadLibrary`.
   
 <br/>
 <br />
