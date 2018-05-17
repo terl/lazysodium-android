@@ -15,8 +15,8 @@ This section will help you get started with Lazysodium quickly (and with utmost 
 ### Requirements
 Lazysodium for Android requires:  
   
-* Android 16 or higher. Untested on lower versions.
-* Gradle 4.7 or higher (if compiling and building).  
+* Android 19 or higher. Untested on lower versions.
+* Gradle 4.5 or higher (if compiling and building).  
 * No effort whatsoever.  
   
 
