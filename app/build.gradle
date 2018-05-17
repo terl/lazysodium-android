@@ -43,9 +43,9 @@ android {
         jniLibs.srcDirs = ['src/main/jniLibs']
 
         java {
-            srcDir "../lazysodium-java/src/main"
-            exclude "java/com/goterl/lazycode/lazysodium/utils/NativeUtils.java"
-            exclude "java/com/goterl/lazycode/lazysodium/SodiumJava.java"
+            srcDir "../lazysodium-java/src/main/java"
+            exclude "com/goterl/lazycode/lazysodium/utils/NativeUtils.java"
+            exclude "com/goterl/lazycode/lazysodium/SodiumJava.java"
         }
     }
 }
