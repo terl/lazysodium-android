@@ -59,13 +59,10 @@ dependencies {
 ```
 
 
-## Getting started
-Please refer to the [Lazysodium for Java's Wiki](https://github.com/terl/lazysodium-java/wiki/Home) project for more details on getting started.
+## Documentation
+Please refer to [Lazysodium's official docs](https://docs.lazycode.co/lazysodium).
 
 
-## Notes
-1. Lazysodium for Android is just [Lazysodium for Java](https://github.com/terl/lazysodium-java) but instead of native libraries built for MacOS, Windows and Linux, Lazysodium for Android has native libraries built for Android in the `app/src/main/libs` folder. 
-2. You need to remember that instead of JNA for Java you need JNA for Android. I.e. `implementation 'net.java.dev.jna:jna:JNA_VERSION_NUMBER@aar'`, otherwise the SecurityManager would complain if you performed the JNA method `Native.loadLibrary`.
   
 <br/>
 <br />
