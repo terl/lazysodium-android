@@ -17,7 +17,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '1.2.2'
+    version = '2.0.0'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
 }
@@ -46,17 +46,28 @@ android {
             srcDir "../lazysodium-java/src/main/java"
             exclude "com/goterl/lazycode/lazysodium/utils/NativeUtils.java"
             exclude "com/goterl/lazycode/lazysodium/SodiumJava.java"
+            exclude "com/goterl/lazycode/lazysodium/LazySodiumJava.java"
         }
     }
 }
 
 tasks.withType(Javadoc).all { enabled = false }
 
+tasks.withType(Test) {
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2", {
         exclude group: "com.android.support", module: "support-annotations"
     })
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.12'
     implementation 'net.java.dev.jna:jna:4.5.1@aar'
 }

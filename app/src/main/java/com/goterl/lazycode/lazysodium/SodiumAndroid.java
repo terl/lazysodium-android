@@ -30,11 +30,11 @@ public class SodiumAndroid extends com.goterl.lazycode.lazysodium.Sodium {
      */
     public SodiumAndroid(String path) {
 
-        // If it's the android platform then we load
-        // the libsodium.so files from the "src/main/libs" folder.
+        // Load the libsodium.so files from the "src/main/libs" folder.
         // This folder should have folders with ABI names
         // such as x86 or x86_64 etc.
         Native.register(Sodium.class, path);
+        Native.register(SodiumAndroid.class, path);
 
     }
 
