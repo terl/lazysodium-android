@@ -9,6 +9,8 @@
 package com.goterl.lazycode.lazysodium;
 
 import android.support.test.runner.AndroidJUnit4;
+import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
+import com.goterl.lazycode.lazysodium.utils.KeyPair;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +32,26 @@ public class LoadTest {
         String key = lazySodium.cryptoAuthKeygen();
 
         TestCase.assertNotNull(key);
+    }
+
+    @Test
+    public void signDetached() throws SodiumException {
+        SodiumAndroid sodiumAndroid = new SodiumAndroid();
+        LazySodiumAndroid lazySodium = new LazySodiumAndroid(sodiumAndroid);
+
+        String message = "sign this please";
+
+        // Get a keypair for signing
+        KeyPair keyPair = lazySodium.cryptoSignKeypair();
+
+        // Just create a signature (WITHOUT the original test attached"
+        String signature = lazySodium.cryptoSignDetached(message, keyPair.getSecretKeyString());
+
+        // Verify that signature works with a public key
+        // and the same message...
+        boolean result = lazySodium.cryptoSignVerifyDetached(signature, message, keyPair.getPublicKeyString());
+
+        TestCase.assertTrue(result);
     }
 
 }
