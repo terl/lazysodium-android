@@ -15,6 +15,7 @@ public class SodiumAndroid extends com.goterl.lazycode.lazysodium.Sodium {
 
     public SodiumAndroid() {
         this("sodium");
+        onRegistered();
     }
 
     /**
@@ -35,7 +36,7 @@ public class SodiumAndroid extends com.goterl.lazycode.lazysodium.Sodium {
         // such as x86 or x86_64 etc.
         Native.register(Sodium.class, path);
         Native.register(SodiumAndroid.class, path);
-
+        onRegistered();
     }
 
 
