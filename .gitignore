@@ -70,3 +70,5 @@ out/
 # Netbeans #
 ################
 .nbattrs
+
+local.properties
