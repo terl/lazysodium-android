@@ -23,11 +23,11 @@ ext {
 }
 
 android {
-    compileSdkVersion 'android-P'
+    compileSdkVersion 28
     buildToolsVersion "27.0.3"
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 29
+        minSdkVersion 16
+        targetSdkVersion 28
         versionCode 13
         versionName project.ext.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -44,10 +44,15 @@ android {
 
         java {
             srcDir "../lazysodium-java/src/main/java"
+            // Be sure to update lint.xml in the project root if any other
+            // excluded files are added.
             exclude "com/goterl/lazycode/lazysodium/utils/NativeUtils.java"
             exclude "com/goterl/lazycode/lazysodium/SodiumJava.java"
             exclude "com/goterl/lazycode/lazysodium/LazySodiumJava.java"
         }
+    }
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
     }
 }
 
@@ -69,16 +74,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.12'
-    implementation 'net.java.dev.jna:jna:4.5.1@aar'
+    api 'net.java.dev.jna:jna:4.5.1@aar'
 }
-
 
 // Tasks
 signing {
     // This will use the GPG Agent
     // to sign the jar
-    useGpgCmd()
-    sign configurations.archives
+  useGpgCmd()
+  sign configurations.archives
 }
 
 task sourcesJar(type: Jar) {
@@ -107,12 +111,9 @@ task signPom(type: Sign) {
     outputs.upToDateWhen { false }
 }
 
-
 artifacts {
     archives sourcesJar, javadocJar
 }
-
-
 
 publishing {
     publications {
@@ -127,17 +128,7 @@ publishing {
 
 
             project.tasks.withType(Sign) {
-                signatures.all {
-                    def type = it.type
-                    if (it.file.name.endsWith('.tar.gz.asc')) {
-                        // Workaround in case a tar.gz file should published
-                        type = 'tar.gz.asc'
-                    } else if (it.type.equals('xml.asc')) {
-                        // Set correct extension for signature of pom file
-                        type = 'pom.asc'
-                    }
-                    artifact source: it.file, classifier: it.classifier ?: null, extension: type
-                }
+              onlyIf { false }
             }
 
             pom.withXml {
@@ -201,8 +192,5 @@ bintray {
 model {
     tasks.publishMavenJavaPublicationToMavenLocal {
         dependsOn project.tasks.withType(Sign)
-    }
-    tasks.signPom {
-        dependsOn tasks.generatePomFileForMavenJavaPublication
     }
 }

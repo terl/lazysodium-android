@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+  <!-- Ignore the ObsoleteLayoutParam issue in the specified files -->
+  <issue id="all">
+    <ignore regexp="NativeUtils\.java" />
+    <ignore regexp="SodiumJava\.java" />
+    <ignore regexp="LazySodiumJava\.java" />
+  </issue>
+
+</lint>
