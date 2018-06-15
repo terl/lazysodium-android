@@ -92,8 +92,8 @@ Substitute `VERSION_NUMBER` for the version in this box:
 You can now initialise and start encrypting! **Please note** that this library follows the official [libsodium docs](https://download.libsodium.org/doc/) closely. You need to use those docs to help you find the functions you need.
 
 ```java
-// Let's initialise LazySodium
-LazySodiumJava lazySodium = new LazySodiumAndroid(new SodiumAndroid());
+// Let's initialise LazySodium, perhaps in an Application class somewhere
+LazySodiumAndroid lazySodium = new LazySodiumAndroid(new SodiumAndroid());
 
 // Now you can cast to an interface so that our
 // IDE picks up and intelligently loads up the correct methods. 
