@@ -135,10 +135,6 @@ publishing {
             artifact javadocJar
 
 
-            project.tasks.withType(Sign) {
-              onlyIf { false }
-            }
-
             pom.withXml {
                 def root = asNode()
                 root.appendNode('description', project.ext.description)
@@ -179,6 +175,7 @@ bintray {
     key = findProperty("bintray.apiKey")
     publications = ['mavenJava']
     publish = true
+    configurations = ['archives']
     pkg {
         repo = 'lazysodium-maven'
         name = project.ext.artifactId
