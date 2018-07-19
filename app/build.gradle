@@ -11,13 +11,13 @@ plugins {
     id 'signing'
     id 'maven'
     id 'maven-publish'
-    id "com.jfrog.bintray" version "1.7.3"
+    id "com.jfrog.bintray" version "1.8.3"
 }
 
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '2.6.0'
+    version = '3.0.0'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
 }
