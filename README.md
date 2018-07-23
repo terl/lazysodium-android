@@ -119,6 +119,12 @@ Every interface you can cast to is helpfully all in [one directory](https://gith
 
 See our [official documentation](https://docs.lazycode.co/lazysodium) to get started.
 
+## Apps
+
+You can preview some of the features in our free Lazysodium app available on Google Play:
+
+<a href='https://play.google.com/store/apps/details?id=com.goterl.lazycode.lazysodium.example&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/images/generic/en_badge_web_generic.png' width="140"/></a>
+
 
 ## Lazysodium for Java
 We also have a Java implementation available at [Lazysodium for Java](https://github.com/terl/lazysodium-java). It has the same API as this library so you can share code easily!
