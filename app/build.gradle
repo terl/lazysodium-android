@@ -1,3 +1,5 @@
+import java.nio.file.Files
+
 /*
  * Copyright (c) Terl Tech Ltd • 09/05/18 18:38 • goterl.com
  *
@@ -17,9 +19,11 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '3.1.0'
+    version = '3.1.1'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
+    thisTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
+    otherTestDir = "../lazysodium-java/src/test/java"
 }
 
 group project.ext.groupId
@@ -54,14 +58,7 @@ android {
             exclude "com/goterl/lazycode/lazysodium/LazySodiumJava.java"
         }
     }
-    // I would like to include the Java test sources so that we don't,
-    // have to rewrite all our tests again,
-    // however as expected, it errors, as it cannot find SodiumJava.
-//    sourceSets.androidTest.java {
-//        def origTestsDir = sourceSets.androidTest.java.getSrcDirs()
-//        def javaTestsDir = [new File("../lazysodium-java/src/test/java")]
-//        srcDirs = origTestsDir + javaTestsDir
-//    }
+
     lintOptions {
         lintConfig rootProject.file('lint.xml')
     }
@@ -76,6 +73,75 @@ tasks.withType(Test) {
         showStandardStreams true
     }
 }
+
+
+// You can add extra file names to
+// exclude here
+def excludeTheseFilesFromTests = ['BaseTest.java']
+
+// Exclude every file from LazysodiumJava
+// that is not a file and also contains the string "Java"
+// (i.e we don't want to include the Java specific tests)
+ext.getExcludedTestFileNames = { ->
+    def exclude = fileTree(otherTestDir).filter { it.isFile() && it.name.contains("Java") }.files.name
+    return exclude + excludeTheseFilesFromTests
+}
+
+// Get the test files EXCLUDING the
+// filenames that get aggregated from the above function
+ext.getTestFiles = { ->
+    def excludeTheseFiles = getExcludedTestFileNames()
+    def files = fileTree(otherTestDir).exclude(excludeTheseFiles)
+    return files
+}
+
+
+// This task will try to delete all the files
+// that were copied from the 'copyTests' tasks
+task deleteCopiedTests(type: Task) {
+    doFirst {
+        def files = getTestFiles()
+        files.each { file ->
+            def f = new File(thisTestDir + "/" + file.name)
+            if (f.exists()) {
+                println "Deleted: " + f.getName()
+                delete f
+            }
+        }
+    }
+}
+
+// Copy all the tests from the LazysodiumJava
+// project and put them into this project.
+// We overwrite if there is already a file there.
+task copyTests(type: Copy) {
+    def names = getExcludedTestFileNames()
+    from otherTestDir
+    into thisTestDir
+    include "*"
+    exclude names
+    duplicatesStrategy DuplicatesStrategy.INCLUDE
+}
+
+// This task adds the string "package com.goterl.lazycode.lazysodium;"
+// to the start of every test. This depends on "copyTests"
+task addPackageStatements(type: Task, dependsOn: "copyTests") {
+    doLast {
+        def files = getTestFiles()
+        files.each { file ->
+            // If the file exists in LazysodiumAndroid (this project)
+            // then prepend the lkine
+            def f = new File(thisTestDir + "/" + file.name)
+            if (f.exists()) {
+                f.write("package com.goterl.lazycode.lazysodium;\n" + f.text)
+            }
+        }
+    }
+}
+
+// Everytime we build, please perform "addPackageStatements"
+preBuild.dependsOn addPackageStatements
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
