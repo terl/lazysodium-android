@@ -1,4 +1,4 @@
-import java.nio.file.Files
+
 
 /*
  * Copyright (c) Terl Tech Ltd • 09/05/18 18:38 • goterl.com
@@ -19,11 +19,11 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '3.1.1'
+    version = '3.1.3'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
-    thisTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
-    otherTestDir = "../lazysodium-java/src/test/java"
+    androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
+    javaTestDir = "../lazysodium-java/src/test/java"
 }
 
 group project.ext.groupId
@@ -80,10 +80,9 @@ tasks.withType(Test) {
 def excludeTheseFilesFromTests = ['BaseTest.java']
 
 // Exclude every file from LazysodiumJava
-// that is not a file and also contains the string "Java"
-// (i.e we don't want to include the Java specific tests)
+// that is not a file and also does not contain "Android"
 ext.getExcludedTestFileNames = { ->
-    def exclude = fileTree(otherTestDir).filter { it.isFile() && it.name.contains("Java") }.files.name
+    def exclude = fileTree(javaTestDir).filter { it.isFile() && !it.name.contains("Android") }.files.name
     return exclude + excludeTheseFilesFromTests
 }
 
@@ -91,7 +90,7 @@ ext.getExcludedTestFileNames = { ->
 // filenames that get aggregated from the above function
 ext.getTestFiles = { ->
     def excludeTheseFiles = getExcludedTestFileNames()
-    def files = fileTree(otherTestDir).exclude(excludeTheseFiles)
+    def files = fileTree(javaTestDir).exclude(excludeTheseFiles)
     return files
 }
 
@@ -102,7 +101,7 @@ task deleteCopiedTests(type: Task) {
     doFirst {
         def files = getTestFiles()
         files.each { file ->
-            def f = new File(thisTestDir + "/" + file.name)
+            def f = new File(androidTestDir + "/" + file.name)
             if (f.exists()) {
                 println "Deleted: " + f.getName()
                 delete f
@@ -113,11 +112,11 @@ task deleteCopiedTests(type: Task) {
 
 // Copy all the tests from the LazysodiumJava
 // project and put them into this project.
-// We overwrite if there is already a file there.
+// We overwrite if there is already a file here.
 task copyTests(type: Copy) {
     def names = getExcludedTestFileNames()
-    from otherTestDir
-    into thisTestDir
+    from javaTestDir
+    into androidTestDir
     include "*"
     exclude names
     duplicatesStrategy DuplicatesStrategy.INCLUDE
@@ -130,8 +129,8 @@ task addPackageStatements(type: Task, dependsOn: "copyTests") {
         def files = getTestFiles()
         files.each { file ->
             // If the file exists in LazysodiumAndroid (this project)
-            // then prepend the lkine
-            def f = new File(thisTestDir + "/" + file.name)
+            // then prepend the line
+            def f = new File(androidTestDir + "/" + file.name)
             if (f.exists()) {
                 f.write("package com.goterl.lazycode.lazysodium;\n" + f.text)
             }

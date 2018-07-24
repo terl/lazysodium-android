@@ -17,7 +17,7 @@ import com.goterl.lazycode.lazysodium.utils.Key;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class AEADTest extends BaseTest {
+public class AEADAndroidTest extends BaseTest {
 
     private final String PASSWORD = "superSecurePassword";
 
@@ -108,31 +108,34 @@ public class AEADTest extends BaseTest {
     }
 
 
-
     @Test
     public void encryptAES() {
-        Key key = lazySodium.keygen(AEAD.Method.AES256GCM);
+        if (lazySodium.cryptoAeadAES256GCMIsAvailable()) {
+            Key key = lazySodium.keygen(AEAD.Method.AES256GCM);
 
-        byte[] nPub = lazySodium.nonce(AEAD.AES256GCM_NPUBBYTES);
+            byte[] nPub = lazySodium.nonce(AEAD.AES256GCM_NPUBBYTES);
 
-        String cipher = lazySodium.encrypt(PASSWORD, null, nPub, key, AEAD.Method.AES256GCM);
-        String decrypted = lazySodium.decrypt(cipher, null, nPub, key, AEAD.Method.AES256GCM);
+            String cipher = lazySodium.encrypt(PASSWORD, null, nPub, key, AEAD.Method.AES256GCM);
+            String decrypted = lazySodium.decrypt(cipher, null, nPub, key, AEAD.Method.AES256GCM);
 
-        TestCase.assertEquals(decrypted, PASSWORD);
+            TestCase.assertEquals(decrypted, PASSWORD);
+        }
     }
 
     @Test
     public void encryptAESDetached() {
-        Key key = lazySodium.keygen(AEAD.Method.AES256GCM);
+        if (lazySodium.cryptoAeadAES256GCMIsAvailable()) {
+            Key key = lazySodium.keygen(AEAD.Method.AES256GCM);
 
-        byte[] nPub = lazySodium.nonce(AEAD.AES256GCM_NPUBBYTES);
+            byte[] nPub = lazySodium.nonce(AEAD.AES256GCM_NPUBBYTES);
 
-        DetachedEncrypt detachedEncrypt
-                = lazySodium.encryptDetached(PASSWORD, null, null, nPub, key, AEAD.Method.AES256GCM);
+            DetachedEncrypt detachedEncrypt
+                    = lazySodium.encryptDetached(PASSWORD, null, null, nPub, key, AEAD.Method.AES256GCM);
 
-        DetachedDecrypt detachedDecrypt = lazySodium.decryptDetached(detachedEncrypt, null, null, nPub, key, AEAD.Method.AES256GCM);
+            DetachedDecrypt detachedDecrypt = lazySodium.decryptDetached(detachedEncrypt, null, null, nPub, key, AEAD.Method.AES256GCM);
 
-        TestCase.assertEquals(detachedDecrypt.getMessageString(), PASSWORD);
+            TestCase.assertEquals(detachedDecrypt.getMessageString(), PASSWORD);
+        }
     }
 
 }

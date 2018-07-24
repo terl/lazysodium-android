@@ -19,7 +19,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class PwHashTest extends BaseTest {
+public class PwHashAndroidTest extends BaseTest {
 
     private final String PASSWORD = "Password123456!!!!@@";
 
@@ -67,27 +67,5 @@ public class PwHashTest extends BaseTest {
     // will fail on most machines
     public void cryptoPwHashStrTestSensitive() { }
 
-
-    @Test
-    public void scryptHash() throws SodiumException {
-
-        byte[] salt = new byte[LazySodium.longToInt(Scrypt.SCRYPTSALSA208SHA256_SALT_BYTES)];
-        String scryptHash = lazySodium.cryptoPwHashScryptSalsa208Sha256(
-                PASSWORD,
-                salt,
-                Scrypt.SCRYPTSALSA208SHA256_OPSLIMIT_MIN,
-                Scrypt.SCRYPTSALSA208SHA256_MEMLIMIT_MIN
-        );
-
-        String hash = lazySodium.cryptoPwHashScryptSalsa208Sha256Str(
-                PASSWORD,
-                Scrypt.SCRYPTSALSA208SHA256_OPSLIMIT_MIN,
-                Scrypt.SCRYPTSALSA208SHA256_MEMLIMIT_MIN
-        );
-
-        boolean isCorrect = lazySodium.cryptoPwHashScryptSalsa208Sha256StrVerify(hash, PASSWORD);
-
-        assertTrue("Minimum hashing failed.", isCorrect);
-    }
 
 }
