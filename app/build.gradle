@@ -62,6 +62,10 @@ android {
     lintOptions {
         lintConfig rootProject.file('lint.xml')
     }
+
+    packagingOptions {
+        exclude '../lazysodium-java/src/test/java'
+    }
 }
 
 tasks.withType(Javadoc).all { enabled = false }
@@ -139,6 +143,7 @@ task addPackageStatements(type: Task, dependsOn: "copyTests") {
 }
 
 // Everytime we build, please perform "addPackageStatements"
+preBuild.dependsOn copyTests
 preBuild.dependsOn addPackageStatements
 
 

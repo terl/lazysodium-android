@@ -8,6 +8,9 @@ package com.goterl.lazycode.lazysodium;
  */
 
 
+import com.goterl.lazycode.lazysodium.LazySodiumAndroid;
+import com.goterl.lazycode.lazysodium.SodiumAndroid;
+
 public class BaseTest {
 
     public static LazySodiumAndroid lazySodium = new LazySodiumAndroid(new SodiumAndroid());
