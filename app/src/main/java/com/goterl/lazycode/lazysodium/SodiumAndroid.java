@@ -39,5 +39,4 @@ public class SodiumAndroid extends com.goterl.lazycode.lazysodium.Sodium {
         onRegistered();
     }
 
-
 }
