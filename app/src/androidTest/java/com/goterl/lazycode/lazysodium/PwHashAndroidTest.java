@@ -1,3 +1,4 @@
+package com.goterl.lazycode.lazysodium;
 /*
  * Copyright (c) Terl Tech Ltd • 03/05/18 11:37 • goterl.com
  *
@@ -42,7 +43,7 @@ public class PwHashAndroidTest extends BaseTest {
                 PwHash.BYTES_MIN,
                 lazySodium.randomBytesBuf(PwHash.SALTBYTES),
                 5L,
-                8192L * 2,
+                8192 * 2,
                 PwHash.Alg.PWHASH_ALG_ARGON2ID13
         );
 
