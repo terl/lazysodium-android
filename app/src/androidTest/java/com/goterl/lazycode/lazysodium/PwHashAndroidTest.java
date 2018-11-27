@@ -1,3 +1,4 @@
+package com.goterl.lazycode.lazysodium;
 /*
  * Copyright (c) Terl Tech Ltd • 03/05/18 11:37 • goterl.com
  *
@@ -15,6 +16,8 @@ import com.goterl.lazycode.lazysodium.interfaces.PwHash;
 import com.goterl.lazycode.lazysodium.interfaces.Scrypt;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -37,7 +40,7 @@ public class PwHashAndroidTest extends BaseTest {
 
         String output = pwHashLazy.cryptoPwHash(
                 PASSWORD,
-                PwHash.BYTES_MIN + 20,
+                PwHash.BYTES_MIN,
                 lazySodium.randomBytesBuf(PwHash.SALTBYTES),
                 5L,
                 8192L * 2,
@@ -65,7 +68,7 @@ public class PwHashAndroidTest extends BaseTest {
 
     // We don't test for this as it's pretty demanding and
     // will fail on most machines
-    public void cryptoPwHashStrTestSensitive() { }
+    public void cryptoPwHashStrTestSensitive() {}
 
 
 }

@@ -77,7 +77,7 @@ Substitute `VERSION_NUMBER` for the version in this box:
 
 [![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
 
-Substitute `JNA_VERSION` for the [latest JNA version](https://mvnrepository.com/artifact/net.java.dev.jna/jna).
+~~Substitute `JNA_VERSION` for the [latest JNA version](https://mvnrepository.com/artifact/net.java.dev.jna/jna).~~ JNA (version 5+) seems to break Lazysodium for Android so please use version **4.5.2** for now.
 
 
 ### 2. Let's go!

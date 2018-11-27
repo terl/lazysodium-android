@@ -19,7 +19,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '3.3.0'
+    version = '3.3.3'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
@@ -83,7 +83,7 @@ tasks.withType(Test) {
 // exclude here
 def excludeTheseFilesFromTests = ['BaseTest.java']
 
-// Exclude every file from LazysodiumJava
+// Exclude every file from LazySodiumJava
 // that is not a file and also does not contain "Android"
 ext.getExcludedTestFileNames = { ->
     def exclude = fileTree(javaTestDir).filter { it.isFile() && !it.name.contains("Android") }.files.name
@@ -155,7 +155,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.12'
-    api 'net.java.dev.jna:jna:4.5.1@aar'
+    api 'net.java.dev.jna:jna:4.5.2@aar'
 }
 
 // Tasks
