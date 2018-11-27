@@ -1,4 +1,3 @@
-package com.goterl.lazycode.lazysodium;
 /*
  * Copyright (c) Terl Tech Ltd • 18/05/18 21:45 • goterl.com
  *
