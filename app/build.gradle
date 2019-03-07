@@ -13,13 +13,13 @@ plugins {
     id 'signing'
     id 'maven'
     id 'maven-publish'
-    id "com.jfrog.bintray" version "1.8.3"
+    id "com.jfrog.bintray" version "1.8.4"
 }
 
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '3.5.0'
+    version = '3.6.0'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
@@ -31,11 +31,11 @@ version = project.ext.version
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "27.0.3"
+    buildToolsVersion "28.0.3"
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 13
+        versionCode 14
         versionName project.ext.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -155,7 +155,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.12'
-    api 'net.java.dev.jna:jna:4.5.2@aar'
+    api 'net.java.dev.jna:jna:5.2.0@aar'
 }
 
 // Tasks
@@ -203,7 +203,7 @@ publishing {
             artifactId project.ext.artifactId
             version project.ext.version
 
-            artifact bundleRelease
+            artifact bundleReleaseAar
             artifact sourcesJar
             artifact javadocJar
 
