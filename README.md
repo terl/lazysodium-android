@@ -12,11 +12,9 @@ Lazysodium is a **complete** Android implementation of the [Libsodium](https://g
 
 
 ## Why Lazysodium
-We created Lazysodium because we really wanted a solid cryptography library that would just work without fuss.
+We created Lazysodium because we really wanted a solid Libsodium compatible Java/Android library that would just work without fuss. We were exasperated and annoyed with current Libsodium implementations as some of them were just poorly maintained and poorly architected.
 
-We were exasperated and annoyed with current Libsodium implementations as some of them were just poorly maintained, poorly managed and, plain and simply, poorly architected.
-
-Thus, Lazysodium was born with the blessings of *Lazycode*, a part of [Terl](https://terl.co) that specialises in giving developers easy-to-use software and tools that just work. Read more about us below.
+You can find more info [here](https://docs.lazycode.co/lazysodium/about).
 
 ### The difference in code
 We believe the code speaks for itself. Compare the two ways you could use Lazysodium:
@@ -129,20 +127,9 @@ You can preview some of the features in our free Lazysodium app available on Goo
 ## Lazysodium for Java
 We also have a Java implementation available at [Lazysodium for Java](https://github.com/terl/lazysodium-java). It has the same API as this library so you can share code easily!
 
-## Help us grow
-Lazysodium needs your support for it to continue being maintained and improved. Even if you put forward £1/$1/€1 it still means a lot for us. Your money would go into improving our open-source projects first and foremost. 
-
-|            | Patreon                                                                                                                                 | Terl Supporters                                                                                                                    |
-|------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-|            | <a href="https://www.patreon.com/terlacious"><img src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/patron_button.png" width="100" /></a> | <a href="https://terl.co/support-us"><img src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/terl_slant_square.png" width="40" /></a> |
-| One-time   | ✗                                                                                                                                       | ✓                                                                                                                                  |
-| Weekly     | ✗                                                                                                                                       | ✓                                                                                                                                  |
-| Monthly    | ✓                                                                                                                                       | ✓                                                                                                                                  |
-| Yearly     | ✗                                                                                                                                       | ✓                                                                                                                                  |
-| Rewards    | ✓                                                                                                                                       | ✓                                                                                                                                  |
-| Currencies | USD                                                                                                                                     | 100+ currencies                                                                                                                    |
-
 
 ## Who are we?
-<a href="https://terl.co"><img width="100" style="float: left: display: inline;" src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/terl_slant.png" /></a>  
+
+<a href="https://terl.co"><img width="100" style="float: left: display: inline;" src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/terl_tm_small.png" /></a>
+
 Created by the wizards at [Terl](https://terl.co).
