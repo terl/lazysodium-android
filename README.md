@@ -16,35 +16,22 @@ We created Lazysodium because we really wanted a solid Libsodium compatible Java
 
 You can find more info [here](https://docs.lazycode.co/lazysodium/about).
 
-### The difference in code
-We believe the code speaks for itself. Compare the two ways you could use Lazysodium:
+## Used by
 
-#### 1. Using native functions
+| **Name** | **Short description** | **Android** | **Java** |
+| :--- | :--- | :--- | :--- |
+| [**Threema \(SaltyRTC\)**](https://github.com/saltyrtc/saltyrtc-client-java) | Threema is a global end-to-end encrypted chatting app and _SaltyRTC_ is their protocol for encryption. | ✓ | ✓ |
+| [**PayPay**](https://github.com/paypayue/AndroidPaymentSDK) | CardPaymentSDK is a card payments library to make payments through several payment methods painless. It uses [PayPay](https://paypay.pt/paypay/) as an endpoint to establish a payment security channel. | ✓ | ✗ |
+| [**RDACAA**](https://gitlab.com/MSP_EC/rdacaa/tree/88-cierre-del-mes-atenciones-por-usuario)| Used by the government of Ecuador's Ministry of Health to encrypt and sign a list of ambulatory care and consultations. | ✗ | ✓ |
+| [**E3DB**](https://tozny.com/e3db/) | An encrypted NoSQL database designed from the ground-up for user privacy and security. | ✓ | ✓ |
+| [**ADAMANT**](https://adamant.im/) | The most private messenger possible. Your device does not store any info. It directly interacts with the blockchain, where every byte is fully-encrypted. | ✓ | ✗ |
+| [**Kepler**](https://github.com/Quackster/Kepler) | A small TCP server written in Java powered by Netty, an asynchronous networking library. | ✗ | ✓ |
+| [**Regen Ledger**](https://www.regen.network/) | A global marketplace & contracting platform for Earth's ecosystem assets, services, and data. | ✗ | ✓ |
+| [**Tezos**](https://github.com/LMilfont/TezosJ-plainjava) | The TezosJ SDK library enables plain Java developers to create applications that communicates with Tezos blockchain. | ✗ | ✓ |
+| [**Exonum**](https://github.com/exonum/exonum-java-binding) | Exonum Java Binding is a framework for building blockchain applications in Java, powered by Exonum. | ✗ | ✓ |
+| [**Paseto**](https://github.com/atholbro/paseto) | Java Implementation of Platform-Agnostic Security Tokens. | ✗ | ✓ |
+| [**Recordo**](https://recordo.co) | A super secure diary/journal that provides end to end encryption. | ✓ | ✓ |
 
-```java
-byte[] subkey = subkey[32];
-byte[] context = "Examples".getBytes(StandardCharsets.UTF_8);
-byte[] masterKey = "a_master_key".getBytes(StandardCharsets.UTF_8);
-int result = lazySodium.cryptoKdfDeriveFromKey(subkey, subkey.length, 1L, context, masterKey);
-
-// Now check the result
-if (res == 0) {
-    // We have a positive result. Let's store it in a database.
-    String subkeyString = new String(subkey, StandardCharsets.UTF_8);
-}
-```
-
-#### 2. Or use Lazysodium's lazy functions
-You could use the above native functions **or** you could use the "Lazy" functions 😄
- 
-```java
-String context = "Examples";
-String masterKey = "a_master_key";
-String subkeyString = lazySodium.cryptoKdfDeriveFromKey(1L, context, masterKey);
-// Now store in database or something
-```
-
-As you can see Lazysodium's lazy functions **save you a lot of pain**!
 
 ## Features
 You can find an up-to-date feature list [here](https://docs.lazycode.co/lazysodium/features).
@@ -54,7 +41,7 @@ You can find an up-to-date feature list [here](https://docs.lazycode.co/lazysodi
 This is by no means a comprehensive introduction to Lazysodium. Please view the [official documentation](https://docs.lazycode.co/lazysodium/installation) for a more comprehensive guide.
 
 ### 1. Install
-Install by adding the bintray repository and the dependency.
+Install by adding the bintray repository and the dependency. For Maven users, please see [here](https://docs.lazycode.co/lazysodium/installation).
 
 ```groovy
 // Top level build file
@@ -67,15 +54,12 @@ repositories {
 // Add to dependencies section
 dependencies {
     implementation "com.goterl.lazycode:lazysodium-android:VERSION_NUMBER@aar"
-    implementation "net.java.dev.jna:jna:JNA_VERSION@aar"
 }
 ```
 
 Substitute `VERSION_NUMBER` for the version in this box:
 
 [![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
-
-~~Substitute `JNA_VERSION` for the [latest JNA version](https://mvnrepository.com/artifact/net.java.dev.jna/jna).~~ JNA (version 5+) seems to break Lazysodium for Android so please use version **4.5.2** for now.
 
 
 ### 2. Let's go!
@@ -128,8 +112,8 @@ You can preview some of the features in our free Lazysodium app available on Goo
 We also have a Java implementation available at [Lazysodium for Java](https://github.com/terl/lazysodium-java). It has the same API as this library so you can share code easily!
 
 
-## Who are we?
+---
 
-<a href="https://terl.co"><img width="100" style="float: left: display: inline;" src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/terl_tm_small.png" /></a>
+<a href="https://terl.co"><img width="100" style="float: left: display: inline;" src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/terl.png" /></a>
 
-Created by the wizards at [Terl](https://terl.co).
+Created by [Terl](https://terl.co).

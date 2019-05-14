@@ -19,7 +19,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '3.6.1'
+    version = '3.6.2'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
@@ -35,7 +35,7 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 14
+        versionCode 15
         versionName project.ext.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -155,7 +155,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.12'
-    api 'net.java.dev.jna:jna:5.2.0@aar'
+    implementation 'net.java.dev.jna:jna:5.3.1@aar'
 }
 
 // Tasks
@@ -196,45 +196,47 @@ artifacts {
     archives sourcesJar, javadocJar
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.ext.groupId
-            artifactId project.ext.artifactId
-            version project.ext.version
+project.afterEvaluate {
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                groupId project.ext.groupId
+                artifactId project.ext.artifactId
+                version project.ext.version
 
-            artifact bundleReleaseAar
-            artifact sourcesJar
-            artifact javadocJar
+                artifact bundleReleaseAar
+                artifact sourcesJar
+                artifact javadocJar
 
 
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('description', project.ext.description)
-                root.appendNode('name', project.ext.artifactId)
-                root.appendNode('url', 'https://github.com/terl/lazysodium-android')
+                pom.withXml {
+                    def root = asNode()
+                    root.appendNode('description', project.ext.description)
+                    root.appendNode('name', project.ext.artifactId)
+                    root.appendNode('url', 'https://github.com/terl/lazysodium-android')
 
-                def scm = root.appendNode('scm')
-                scm.appendNode("connection", "scm:git:git://github.com/terl/lazysodium-android.git")
-                scm.appendNode("developerConnection", "scm:git:ssh://github.com/terl/lazysodium-android")
-                scm.appendNode("url", "http://github.com/terl/lazysodium-android")
+                    def scm = root.appendNode('scm')
+                    scm.appendNode("connection", "scm:git:git://github.com/terl/lazysodium-android.git")
+                    scm.appendNode("developerConnection", "scm:git:ssh://github.com/terl/lazysodium-android")
+                    scm.appendNode("url", "http://github.com/terl/lazysodium-android")
 
-                def license = root.appendNode('licenses').appendNode('license')
-                license.appendNode('name', 'Mozilla Public License, Version 2.0')
-                license.appendNode('url', 'http://www.mozilla.org/MPL/2.0/index.txt')
-                license.appendNode('distribution', 'repo')
+                    def license = root.appendNode('licenses').appendNode('license')
+                    license.appendNode('name', 'Mozilla Public License, Version 2.0')
+                    license.appendNode('url', 'http://www.mozilla.org/MPL/2.0/index.txt')
+                    license.appendNode('distribution', 'repo')
 
-                def developer = root.appendNode('developers').appendNode('developer')
-                developer.appendNode('name', 'Terl Tech Ltd')
-                developer.appendNode('email', 'hello@terl.co')
+                    def developer = root.appendNode('developers').appendNode('developer')
+                    developer.appendNode('name', 'Terl Tech Ltd')
+                    developer.appendNode('email', 'hello@terl.co')
 
-                def dependenciesNode = root.appendNode('dependencies')
-                configurations.implementation.allDependencies.each {
-                    if(it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', it.group)
-                        dependencyNode.appendNode('artifactId', it.name)
-                        dependencyNode.appendNode('version', it.version)
+                    def dependenciesNode = root.appendNode('dependencies')
+                    configurations.implementation.allDependencies.each {
+                        if (it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                        }
                     }
                 }
             }
