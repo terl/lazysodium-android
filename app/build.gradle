@@ -19,7 +19,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '3.6.3'
+    version = '3.7.0'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
@@ -155,7 +155,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.12'
-    api 'net.java.dev.jna:jna:5.3.1@aar'
+    implementation 'net.java.dev.jna:jna:5.3.1@aar'
 }
 
 // Tasks
