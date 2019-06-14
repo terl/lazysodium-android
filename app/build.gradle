@@ -10,20 +10,19 @@
 
 plugins {
     id 'com.android.library'
-    id 'signing'
-    id 'maven'
     id 'maven-publish'
+    id 'signing'
     id "com.jfrog.bintray" version "1.8.4"
 }
 
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '3.7.0'
+    version = '3.7.1'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
-    javaTestDir = "../lazysodium-java/src/test/java"
+    javaTestDir = "../lazysodium-java/src/test/java/com/goterl/lazycode/lazysodium"
 }
 
 group project.ext.groupId
@@ -53,7 +52,7 @@ android {
             srcDir "../lazysodium-java/src/main/java"
             // Be sure to update lint.xml in the project root if any other
             // excluded files are added.
-            exclude "com/goterl/lazycode/lazysodium/utils/NativeUtils.java"
+            exclude "com/goterl/lazycode/lazysodium/utils/LibraryLoader.java"
             exclude "com/goterl/lazycode/lazysodium/SodiumJava.java"
             exclude "com/goterl/lazycode/lazysodium/LazySodiumJava.java"
         }
@@ -126,25 +125,9 @@ task copyTests(type: Copy) {
     duplicatesStrategy DuplicatesStrategy.INCLUDE
 }
 
-// This task adds the string "package com.goterl.lazycode.lazysodium;"
-// to the start of every test. This depends on "copyTests"
-task addPackageStatements(type: Task, dependsOn: "copyTests") {
-    doLast {
-        def files = getTestFiles()
-        files.each { file ->
-            // If the file exists in LazysodiumAndroid (this project)
-            // then prepend the line
-            def f = new File(androidTestDir + "/" + file.name)
-            if (f.exists()) {
-                f.write("package com.goterl.lazycode.lazysodium;\n" + f.text)
-            }
-        }
-    }
-}
 
-// Everytime we build, please perform "addPackageStatements"
+// Everytime we build, copy tests
 preBuild.dependsOn copyTests
-preBuild.dependsOn addPackageStatements
 
 
 dependencies {
