@@ -14,7 +14,7 @@ Lazysodium is a **complete** Android implementation of the [Libsodium](https://g
 ## Why Lazysodium
 We created Lazysodium because we really wanted a solid Libsodium compatible Java/Android library that would just work without fuss. We were exasperated and annoyed with current Libsodium implementations as some of them were just poorly maintained and poorly architected.
 
-You can find more info [here](https://docs.lazycode.co/lazysodium/about).
+You can find more info [here](https://docs.lazycode.co/lazysodium/about-1).
 
 ## Used by
 
@@ -34,14 +34,14 @@ You can find more info [here](https://docs.lazycode.co/lazysodium/about).
 
 
 ## Features
-You can find an up-to-date feature list [here](https://docs.lazycode.co/lazysodium/features).
+You can find an up-to-date feature list [here](https://docs.lazycode.co/lazysodium/about-1/features).
 
 ## Quick start
 
-This is by no means a comprehensive introduction to Lazysodium. Please view the [official documentation](https://docs.lazycode.co/lazysodium/installation) for a more comprehensive guide.
+This is by no means a comprehensive introduction to Lazysodium. Please view the [official documentation](https://docs.lazycode.co/lazysodium/usage/installation) for a more comprehensive guide.
 
 ### 1. Install
-Install by adding the bintray repository and the dependency. For Maven users, please see [here](https://docs.lazycode.co/lazysodium/installation).
+Install by adding the bintray repository and the dependency. For Maven users, please see [here](https://docs.lazycode.co/lazysodium/usage/installation).
 
 ```groovy
 // Top level build file
