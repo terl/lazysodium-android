@@ -54,6 +54,7 @@ repositories {
 // Add to dependencies section
 dependencies {
     implementation "com.goterl.lazycode:lazysodium-android:VERSION_NUMBER@aar"
+    implementation 'net.java.dev.jna:jna:4.5.1@aar'
 }
 ```
 
