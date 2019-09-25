@@ -78,58 +78,6 @@ tasks.withType(Test) {
 }
 
 
-// You can add extra file names to
-// exclude here
-def excludeTheseFilesFromTests = ['BaseTest.java']
-
-// Exclude every file from LazySodiumJava
-// that is not a file and also does not contain "Android"
-ext.getExcludedTestFileNames = { ->
-    def exclude = fileTree(javaTestDir).filter { it.isFile() && !it.name.contains("Android") }.files.name
-    return exclude + excludeTheseFilesFromTests
-}
-
-// Get the test files EXCLUDING the
-// filenames that get aggregated from the above function
-ext.getTestFiles = { ->
-    def excludeTheseFiles = getExcludedTestFileNames()
-    def files = fileTree(javaTestDir).exclude(excludeTheseFiles)
-    return files
-}
-
-
-// This task will try to delete all the files
-// that were copied from the 'copyTests' tasks
-task deleteCopiedTests(type: Task) {
-    doFirst {
-        def files = getTestFiles()
-        files.each { file ->
-            def f = new File(androidTestDir + "/" + file.name)
-            if (f.exists()) {
-                println "Deleted: " + f.getName()
-                delete f
-            }
-        }
-    }
-}
-
-// Copy all the tests from the LazysodiumJava
-// project and put them into this project.
-// We overwrite if there is already a file here.
-task copyTests(type: Copy) {
-    def names = getExcludedTestFileNames()
-    from javaTestDir
-    into androidTestDir
-    include "*"
-    exclude names
-    duplicatesStrategy DuplicatesStrategy.INCLUDE
-}
-
-
-// Everytime we build, copy tests
-preBuild.dependsOn copyTests
-
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2", {
@@ -138,7 +86,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.12'
-    implementation 'net.java.dev.jna:jna:5.3.1@aar'
+    implementation 'net.java.dev.jna:jna:5.4.0@aar'
 }
 
 // Tasks
