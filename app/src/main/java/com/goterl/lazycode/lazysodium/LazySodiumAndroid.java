@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Terl Tech Ltd • 23/05/18 16:24 • goterl.com
+ * Copyright (c) Terl Tech Ltd • 04/04/2020, 00:05 • goterl.com
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v2.0. If a copy of the MPL was not distributed with this
@@ -8,26 +8,35 @@
 
 package com.goterl.lazycode.lazysodium;
 
+import com.goterl.lazycode.lazysodium.interfaces.MessageEncoder;
+import com.goterl.lazycode.lazysodium.utils.HexMessageEncoder;
+
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class LazySodiumAndroid extends LazySodium {
 
-
     private final SodiumAndroid sodium;
 
-
     public LazySodiumAndroid(SodiumAndroid sodium) {
-        this.sodium = sodium;
+        this(sodium, StandardCharsets.UTF_8, new HexMessageEncoder());
     }
 
     public LazySodiumAndroid(SodiumAndroid sodium, Charset charset) {
-        super(charset);
+        this(sodium, charset, new HexMessageEncoder());
+    }
+
+    public LazySodiumAndroid(SodiumAndroid sodium, MessageEncoder messageEncoder) {
+        this(sodium, StandardCharsets.UTF_8, messageEncoder);
+    }
+
+    public LazySodiumAndroid(SodiumAndroid sodium, Charset charset, MessageEncoder messageEncoder) {
+        super(charset, messageEncoder);
         this.sodium = sodium;
     }
 
     public SodiumAndroid getSodium() {
         return sodium;
     }
-
 
 }

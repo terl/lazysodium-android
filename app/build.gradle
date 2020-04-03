@@ -1,7 +1,7 @@
 
 
 /*
- * Copyright (c) Terl Tech Ltd • 09/05/18 18:38 • goterl.com
+ * Copyright (c) Terl Tech Ltd • 04/04/2020, 00:05 • goterl.com
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v2.0. If a copy of the MPL was not distributed with this
@@ -32,7 +32,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 15
         versionName project.ext.version
@@ -86,7 +86,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'junit:junit:4.12'
-    implementation 'net.java.dev.jna:jna:5.4.0@aar'
+    implementation 'net.java.dev.jna:jna:5.5.0@aar'
 }
 
 // Tasks
