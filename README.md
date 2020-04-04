@@ -20,6 +20,7 @@ You can find more info [here](https://docs.lazycode.co/lazysodium/about-1).
 
 | **Name** | **Short description** | **Android** | **Java** |
 | :--- | :--- | :--- | :--- |
+| [**WordPress**](https://apps.wordpress.com/mobile/) | WordPress, one of the largest website builders, has Lazysodium powering their encryption in their Android app. | ✓ | ✗ |
 | [**Threema \(SaltyRTC\)**](https://github.com/saltyrtc/saltyrtc-client-java) | Threema is a global end-to-end encrypted chatting app and _SaltyRTC_ is their protocol for encryption. | ✓ | ✓ |
 | [**PayPay**](https://github.com/paypayue/AndroidPaymentSDK) | CardPaymentSDK is a card payments library to make payments through several payment methods painless. It uses [PayPay](https://paypay.pt/paypay/) as an endpoint to establish a payment security channel. | ✓ | ✗ |
 | [**RDACAA**](https://gitlab.com/MSP_EC/rdacaa/tree/88-cierre-del-mes-atenciones-por-usuario)| Used by the government of Ecuador's Ministry of Health to encrypt and sign a list of ambulatory care and consultations. | ✗ | ✓ |
