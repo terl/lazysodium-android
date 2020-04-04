@@ -68,24 +68,26 @@ You can now initialise and start encrypting! **Please note** that this library f
 ```java
 // Let's initialise LazySodium, perhaps in an Application class somewhere
 LazySodiumAndroid lazySodium = new LazySodiumAndroid(new SodiumAndroid());
-
-// Now you can cast to an interface so that our
-// IDE picks up and intelligently loads up the correct methods. 
-SecretBox.Native secretBoxNative = (SecretBox.Native) lazySodium;
-SecretBox.Lazy secretBoxLazy = (SecretBox.Lazy) lazySodium;
-
-// The first one is Lazysodium's Native implementation which
-// is just like libsodium's native C function but with tiny enhancements
-// to make your life easier.
-secretBoxNative.cryptoSecretBoxKeygen(key);
-// Convert key to string and save to DB
-
-// This one is Lazysodium's Lazy implementation which makes
-// your work with cryptography super easy.
-String key = secretBoxLazy.cryptoSecretBoxKeygen();
 ```
 
-In the above code there are two ways you can use Lazysodium. The first way is through the `Native` interface. The second is through the `Lazy` interface. 
+Let's encrypt! Again, most of them are available on the official libsodium documentation.
+
+```java
+// Cast our lazySodium object so we're only using "lazy" methods, 
+// i.e methods that do the heavy work of encryption.
+SecretBox.Lazy secretBoxLazy = (SecretBox.Lazy) lazySodium;
+String message = "This is a super secret message.";
+
+// Generate a symmetric key to encrypt the message.
+Key key = secretBoxLazy.cryptoSecretBoxKeygen();
+
+// Generate a random nonce.
+byte[] nonce = lazySodium.nonce(SecretBox.NONCEBYTES);
+
+// Encrypt now! Now you have a super secure encrypted message
+// available in the variable cipher.
+String cipher = secretBoxLazy.cryptoSecretBoxEasy(message, nonce, key);
+```
 
 ### 3. You decide
 
@@ -93,8 +95,16 @@ Every project is different, you may need to use lower-level APIs to achieve the 
 
 Every interface you can cast to is helpfully all in [one directory](https://github.com/terl/lazysodium-java/tree/20c9a43aac6be5f23209b15870a8cbf73e26ab22/src/main/java/com/goterl/lazycode/lazysodium/interfaces) so you can easily pick the functions you need. This isolates your code and prevents you from making mistakes.
 
-**Important:** If possible, please stick to using either the `Native` *or* the `Lazy` interface. The reason for this is that the `Lazy` interface normally converts everything to hexadecimal whereas the `Native` interface assumes everything is non-hexadecimal. If you don't know what you're doing, you could end up making mistakes.
+**Important:** If possible, please stick to using either the `Native` *or* the `Lazy` interface. The reason for this is that the `Lazy` interface defaults to converting everything to hexadecimal whereas the `Native` interface assumes everything is non-hexadecimal. If you don't know what you're doing, you could end up making mistakes.
 
+You can provide your own encoder as follows:
+
+```java
+// Base64MessageEncoder has to implement our MessageEncoder interface
+Base64MessageEncoder encoder = new Base64MessageEncoder(); 
+// ... then from now on all Lazy methods will be encoded in Base64.
+LazySodiumAndroid lazySodium = new LazySodiumAndroid(new SodiumAndroid(), encoder); 
+```
 
 ## Documentation
 
