@@ -6,8 +6,4 @@
   ~ file, you can obtain one at http://mozilla.org/MPL/2.0/.
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.goterl.lazycode.lazysodium">
-    <application android:allowBackup="true"
-                 android:supportsRtl="true"/>
-</manifest>
+<manifest package="com.goterl.lazycode.lazysodium" />
