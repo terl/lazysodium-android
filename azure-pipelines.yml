@@ -12,6 +12,8 @@ jobs:
   pool:
     vmImage: 'macos-latest'
   steps:
+  - checkout: self
+    submodules: true
   - task: Gradle@2
     inputs:
       workingDirectory: ''
