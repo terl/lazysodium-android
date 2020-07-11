@@ -13,6 +13,8 @@ jobs:
     vmImage: 'macos-latest'
   steps:
   - checkout: self
+    clean: true
+    submodules: true
   - task: Gradle@2
     inputs:
       workingDirectory: ''
