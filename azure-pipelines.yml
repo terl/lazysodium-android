@@ -13,7 +13,7 @@ jobs:
     vmImage: 'macos-latest'
   steps:
   - checkout: self
-    fetchDepth: 10
+    fetchDepth: 5
     clean: true
     submodules: true
   - task: Gradle@2
