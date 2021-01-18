@@ -18,7 +18,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '4.3.0'
+    version = '4.2.0'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
@@ -102,6 +102,31 @@ task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
 }
 
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+
+task signPom(type: Sign) {
+    sign project.file("$buildDir/publications/mavenJava/pom-default.xml")
+
+    // The signing plugin does not seem to notice
+    // it when the publications folder with the
+    // signature has been deleted. So we always
+    // create a new signature
+    outputs.upToDateWhen { false }
+}
+
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
 afterEvaluate {
     publishing {
         publications {
@@ -110,7 +135,9 @@ afterEvaluate {
                 artifactId project.ext.artifactId
                 version project.ext.version
 
+                artifact bundleReleaseAar
                 artifact sourcesJar
+                artifact javadocJar
 
                 pom.withXml {
                     def root = asNode()
