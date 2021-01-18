@@ -43,7 +43,4 @@ public class SecretBoxAndroidTest extends BaseTest {
         TestCase.assertEquals(decrypted, message);
     }
 
-
-
-
 }

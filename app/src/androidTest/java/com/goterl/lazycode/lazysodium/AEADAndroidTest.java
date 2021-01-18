@@ -17,12 +17,14 @@ import com.goterl.lazycode.lazysodium.utils.Key;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import javax.crypto.AEADBadTagException;
+
 public class AEADAndroidTest extends BaseTest {
 
     private final String PASSWORD = "superSecurePassword";
 
     @Test
-    public void encryptChacha() {
+    public void encryptChacha() throws AEADBadTagException {
 
         Key key = lazySodium.keygen(AEAD.Method.CHACHA20_POLY1305);
 
@@ -35,7 +37,7 @@ public class AEADAndroidTest extends BaseTest {
     }
 
     @Test
-    public void encryptChachaIetf() {
+    public void encryptChachaIetf() throws AEADBadTagException {
 
         Key key = lazySodium.keygen(AEAD.Method.CHACHA20_POLY1305_IETF);
 
@@ -48,7 +50,7 @@ public class AEADAndroidTest extends BaseTest {
     }
 
     @Test
-    public void encryptXChacha() {
+    public void encryptXChacha() throws AEADBadTagException {
 
         Key key = lazySodium.keygen(AEAD.Method.XCHACHA20_POLY1305_IETF);
 
@@ -62,7 +64,7 @@ public class AEADAndroidTest extends BaseTest {
 
 
     @Test
-    public void encryptChachaDetached() {
+    public void encryptChachaDetached() throws AEADBadTagException {
 
         Key key = lazySodium.keygen(AEAD.Method.CHACHA20_POLY1305);
 
@@ -78,7 +80,7 @@ public class AEADAndroidTest extends BaseTest {
 
 
     @Test
-    public void encryptChachaIetfDetached() {
+    public void encryptChachaIetfDetached() throws AEADBadTagException {
 
         Key key = lazySodium.keygen(AEAD.Method.CHACHA20_POLY1305_IETF);
 
@@ -93,7 +95,7 @@ public class AEADAndroidTest extends BaseTest {
     }
 
     @Test
-    public void encryptXChachaDetached() {
+    public void encryptXChachaDetached() throws AEADBadTagException {
 
         Key key = lazySodium.keygen(AEAD.Method.XCHACHA20_POLY1305_IETF);
 
@@ -109,7 +111,7 @@ public class AEADAndroidTest extends BaseTest {
 
 
     @Test
-    public void encryptAES() {
+    public void encryptAES() throws AEADBadTagException {
         if (lazySodium.cryptoAeadAES256GCMIsAvailable()) {
             Key key = lazySodium.keygen(AEAD.Method.AES256GCM);
 
@@ -123,10 +125,9 @@ public class AEADAndroidTest extends BaseTest {
     }
 
     @Test
-    public void encryptAESDetached() {
+    public void encryptAESDetached() throws AEADBadTagException {
         if (lazySodium.cryptoAeadAES256GCMIsAvailable()) {
             Key key = lazySodium.keygen(AEAD.Method.AES256GCM);
-
             byte[] nPub = lazySodium.nonce(AEAD.AES256GCM_NPUBBYTES);
 
             DetachedEncrypt detachedEncrypt

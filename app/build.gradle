@@ -12,7 +12,7 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
     id 'signing'
-    id "com.jfrog.bintray" version "1.8.4"
+    id "com.jfrog.bintray" version "1.8.5"
 }
 
 ext {
@@ -29,11 +29,11 @@ group project.ext.groupId
 version = project.ext.version
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.1"
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 16
         versionName project.ext.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -93,52 +93,24 @@ dependencies {
 signing {
     // This will use the GPG Agent
     // to sign the jar
-  useGpgCmd()
-  sign configurations.archives
+    useGpgCmd()
+    sign configurations.archives
 }
 
 task sourcesJar(type: Jar) {
-    classifier = 'sources'
+    archiveClassifier.set('sources')
     from android.sourceSets.main.java.srcDirs
 }
 
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-
-task signPom(type: Sign) {
-    sign project.file("$buildDir/publications/mavenJava/pom-default.xml")
-
-    // The signing plugin does not seem to notice
-    // it when the publications folder with the
-    // signature has been deleted. So we always
-    // create a new signature
-    outputs.upToDateWhen { false }
-}
-
-artifacts {
-    archives sourcesJar, javadocJar
-}
-
-project.afterEvaluate {
+afterEvaluate {
     publishing {
         publications {
-            mavenJava(MavenPublication) {
+            maven(MavenPublication) {
                 groupId project.ext.groupId
                 artifactId project.ext.artifactId
                 version project.ext.version
 
-                artifact bundleReleaseAar
                 artifact sourcesJar
-                artifact javadocJar
-
 
                 pom.withXml {
                     def root = asNode()
@@ -196,12 +168,5 @@ bintray {
             released = new java.util.Date()
             vcsTag = project.ext.version
         }
-    }
-}
-
-
-model {
-    tasks.publishMavenJavaPublicationToMavenLocal {
-        dependsOn project.tasks.withType(Sign)
     }
 }
