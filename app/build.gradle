@@ -197,3 +197,9 @@ bintray {
         }
     }
 }
+
+model {
+    tasks.publishMavenJavaPublicationToMavenLocal {
+        dependsOn project.tasks.withType(Sign)
+    }
+}
