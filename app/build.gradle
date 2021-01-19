@@ -89,6 +89,10 @@ dependencies {
     implementation 'net.java.dev.jna:jna:5.5.0@aar'
 }
 
+Signature.metaClass.getToSignArtifact = { ->
+    return (delegate as Signature).source
+}
+
 // Tasks
 signing {
     // This will use the GPG Agent
