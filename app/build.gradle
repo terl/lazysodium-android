@@ -18,7 +18,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '4.3.1'
+    version = '4.3.2'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
@@ -102,7 +102,7 @@ signing {
 }
 
 task sourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
+    classifier = 'sources'
     from android.sourceSets.main.java.srcDirs
 }
 
@@ -134,7 +134,7 @@ artifacts {
 afterEvaluate {
     publishing {
         publications {
-            maven(MavenPublication) {
+            mavenJava(MavenPublication) {
                 groupId project.ext.groupId
                 artifactId project.ext.artifactId
                 version project.ext.version
