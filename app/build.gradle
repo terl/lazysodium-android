@@ -18,7 +18,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl.lazycode"
-    version = '4.3.0'
+    version = '4.3.1'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
@@ -195,11 +195,5 @@ bintray {
             released = new java.util.Date()
             vcsTag = project.ext.version
         }
-    }
-}
-
-model {
-    tasks.publishMavenJavaPublicationToMavenLocal {
-        dependsOn project.tasks.withType(Sign)
     }
 }
