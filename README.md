@@ -50,7 +50,7 @@ Install by adding the `jcenter()` repository. For Maven users, please see [here]
 ```groovy
 // Top level build file
 repositories {
-    jcenter()
+    maven { url 'https://dl.bintray.com/terl/lazysodium-maven' }
 }
 
 // Add to dependencies section
