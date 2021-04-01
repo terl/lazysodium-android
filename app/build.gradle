@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) Terl Tech Ltd • 04/04/2020, 00:05 • goterl.com
  *
@@ -7,6 +5,8 @@
  * License, v2.0. If a copy of the MPL was not distributed with this
  * file, you can obtain one at http://mozilla.org/MPL/2.0/.
  */
+
+import java.security.Signature
 
 plugins {
     id 'com.android.library'
@@ -17,12 +17,12 @@ plugins {
 
 ext {
     artifactId = "lazysodium-android"
-    groupId = "com.goterl.lazycode"
+    groupId = "com.goterl"
     version = '4.3.2'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
-    androidTestDir = "src/androidTest/java/com/goterl/lazycode/lazysodium"
-    javaTestDir = "../lazysodium-java/src/test/java/com/goterl/lazycode/lazysodium"
+    androidTestDir = "src/androidTest/java/com/goterl/lazysodium"
+    javaTestDir = "../lazysodium-java/src/test/java/com/goterl/lazysodium"
 }
 
 group project.ext.groupId
@@ -52,10 +52,15 @@ android {
             srcDir "../lazysodium-java/src/main/java"
             // Be sure to update lint.xml in the project root if any other
             // excluded files are added.
-            exclude "com/goterl/lazycode/lazysodium/utils/LibraryLoader.java"
-            exclude "com/goterl/lazycode/lazysodium/SodiumJava.java"
-            exclude "com/goterl/lazycode/lazysodium/LazySodiumJava.java"
+            exclude "com/goterl/lazysodium/utils/LibraryLoader.java"
+            exclude "com/goterl/lazysodium/SodiumJava.java"
+            exclude "com/goterl/lazysodium/LazySodiumJava.java"
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {
