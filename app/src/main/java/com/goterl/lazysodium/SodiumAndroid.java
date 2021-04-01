@@ -6,11 +6,11 @@
  * file, you can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-package com.goterl.lazycode.lazysodium;
+package com.goterl.lazysodium;
 
 import com.sun.jna.Native;
 
-public class SodiumAndroid extends com.goterl.lazycode.lazysodium.Sodium {
+public class SodiumAndroid extends com.goterl.lazysodium.Sodium {
 
 
     public SodiumAndroid() {

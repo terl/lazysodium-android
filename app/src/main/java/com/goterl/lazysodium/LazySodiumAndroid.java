@@ -6,10 +6,10 @@
  * file, you can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-package com.goterl.lazycode.lazysodium;
+package com.goterl.lazysodium;
 
-import com.goterl.lazycode.lazysodium.interfaces.MessageEncoder;
-import com.goterl.lazycode.lazysodium.utils.HexMessageEncoder;
+import com.goterl.lazysodium.interfaces.MessageEncoder;
+import com.goterl.lazysodium.utils.HexMessageEncoder;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
