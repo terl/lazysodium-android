@@ -6,7 +6,7 @@
  * file, you can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-package com.goterl.lazycode.lazysodium;import junit.framework.TestCase;
+package com.goterl.lazysodium;import junit.framework.TestCase;
 import org.junit.Test;
 
 public class HelperAndroidTest extends BaseTest {
