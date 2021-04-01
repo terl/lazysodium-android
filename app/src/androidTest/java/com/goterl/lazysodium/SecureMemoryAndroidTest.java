@@ -6,7 +6,7 @@
  * file, you can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-package com.goterl.lazycode.lazysodium;
+package com.goterl.lazysodium;
 
 import com.sun.jna.Pointer;
 import junit.framework.TestCase;
