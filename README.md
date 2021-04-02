@@ -1,17 +1,16 @@
 <p align="center"><img width="260" src="https://filedn.com/lssh2fV92SE8dRT5CWJvvSy/lazysodium_large_transparent.png" /></p>
   
-# Lazysodium for Android
+# Lazysodium Android
   
 Lazysodium is a **complete** Android implementation of the [Libsodium](https://github.com/jedisct1/libsodium) library that provides developers with a **smooth and effortless** cryptography experience. 
 
-[![Build Status](https://dev.azure.com/gurpreetishere/Lazysodium/_apis/build/status/terl.lazysodium-android?branchName=master)](https://dev.azure.com/gurpreetishere/Lazysodium/_build/latest?definitionId=3&branchName=master)
-[![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
-
+[![Build Status](https://dev.azure.com/terl/lazysodium-android/_apis/build/status/terl.lazysodium-android?branchName=master)](https://dev.azure.com/terl/lazysodium-android/_build/latest?definitionId=2&branchName=master)
+![Maven Central](https://img.shields.io/maven-central/v/com.goterl/lazysodium-android?color=%23fff&label=Maven%20Central)
 
 ## Why Lazysodium
 We created Lazysodium because we really wanted a solid Libsodium compatible Java/Android library that would just work without fuss. We were exasperated and annoyed with current Libsodium implementations as some of them were just poorly maintained and poorly architected.
 
-You can find more info [here](https://docs.lazycode.co/lazysodium/about-1).
+You can find more info [here](https://terl.gitbook.io/lazysodium/about-1).
 
 ## Used by
 
@@ -34,31 +33,35 @@ You can find more info [here](https://docs.lazycode.co/lazysodium/about-1).
 ## Features
 **This library is fully compatible with Kotlin powered Android projects.**
 
-You can find an up-to-date feature list [here](https://docs.lazycode.co/lazysodium/about-1/features).
+You can find an up-to-date feature list [here](https://terl.gitbook.io/lazysodium/about-1/features).
 
 ## Quick start
 
-This is by no means a comprehensive introduction to Lazysodium. Please view the [official documentation](https://docs.lazycode.co/lazysodium/usage/installation) for a more comprehensive guide.
+This is by no means a comprehensive introduction to Lazysodium. Please view the [official documentation](https://terl.gitbook.io/lazysodium/usage/installation) for a more comprehensive guide.
 
 ### 1. Install
-Install by adding the `jcenter()` repository. For Maven users, please see [here](https://docs.lazycode.co/lazysodium/usage/installation).
+Whatever build tool you're using the general gist is to add the `mavenCentral()` repository and then add the Lazysodium dependency.
+More detailed instructions [here](https://terl.gitbook.io/lazysodium/usage/installation).
+
+The following example is for users of the build tool Gradle:
 
 ```groovy
 // Top level build file
 repositories {
-    jcenter()
+    // Add this to the end of any existing repositories
+    mavenCentral()
 }
 
-// Add to dependencies section
+// Project level dependencies section
 dependencies {
-    implementation "com.goterl.lazycode:lazysodium-android:VERSION_NUMBER@aar"
-    implementation 'net.java.dev.jna:jna:5.5.0@aar'
+    implementation "com.goterl:lazysodium-android:VERSION_NUMBER@aar"
+    implementation "net.java.dev.jna:jna:5.5.0@aar"
 }
 ```
 
 Substitute `VERSION_NUMBER` for the version in this box:
 
-[![Download](https://api.bintray.com/packages/terl/lazysodium-maven/lazysodium-android/images/download.svg) ](https://bintray.com/terl/lazysodium-maven/lazysodium-android/_latestVersion)
+![Maven Central](https://img.shields.io/maven-central/v/com.goterl/lazysodium-android?color=%23fff&label=Maven%20Central)
 
 
 ### 2. Let's go!
@@ -108,7 +111,7 @@ LazySodiumAndroid lazySodium = new LazySodiumAndroid(new SodiumAndroid(), encode
 
 ## Documentation
 
-See our [official documentation](https://docs.lazycode.co/lazysodium) to get started.
+See our [official documentation](https://terl.gitbook.io/lazysodium) to get started.
 
 ## Apps
 
