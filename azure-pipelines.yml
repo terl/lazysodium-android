@@ -10,7 +10,7 @@ jobs:
 - job: A
   displayName: "Run Android tests"
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'windows-latest'
   steps:
   - checkout: self
     fetchDepth: 5
