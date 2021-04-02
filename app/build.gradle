@@ -12,7 +12,6 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
     id 'signing'
-    id "com.jfrog.bintray" version "1.8.5"
 }
 
 ext {
@@ -72,6 +71,22 @@ android {
     }
 }
 
+void loadProps() {
+    File secretPropsFile = project.rootProject.file('local.properties')
+    if (secretPropsFile.exists()) {
+        Properties p = new Properties()
+        new FileInputStream(secretPropsFile).withCloseable { is ->
+            p.load(is)
+        }
+        p.each { name, value ->
+            ext[name] = value
+        }
+    }
+}
+
+loadProps()
+
+// Don't export documentation
 tasks.withType(Javadoc).all { enabled = false }
 
 tasks.withType(Test) {
@@ -103,7 +118,7 @@ signing {
     // This will use the GPG Agent
     // to sign the jar
     useGpgCmd()
-    sign configurations.archives
+    sign publishing.publications
 }
 
 task sourcesJar(type: Jar) {
@@ -180,29 +195,16 @@ afterEvaluate {
                 }
             }
         }
-    }
-}
 
-
-bintray {
-    user = findProperty("bintray.user")
-    key = findProperty("bintray.apiKey")
-    publications = ['mavenJava']
-    publish = true
-    configurations = ['archives']
-    pkg {
-        repo = 'lazysodium-maven'
-        name = project.ext.artifactId
-        userOrg = 'terl'
-        desc = project.ext.description
-        licenses = ['MPL-2.0']
-        issueTrackerUrl = "https://github.com/terl/lazysodium-android/issues"
-        vcsUrl = 'https://github.com/terl/lazysodium-android.git'
-
-        version {
-            name = project.ext.version
-            released = new java.util.Date()
-            vcsTag = project.ext.version
+        repositories {
+            maven {
+                name = "sonatype"
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    username ossrhUsername ?: ""
+                    password ossrhPassword ?: ""
+                }
+            }
         }
     }
 }
