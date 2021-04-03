@@ -86,6 +86,24 @@ void loadProps() {
 
 loadProps()
 
+// Return an empty string if a property
+// cannot be found
+String getProp(String propName) {
+    if (ext.hasProperty(propName) != null) {
+        return ext[propName]
+    } else {
+        ""
+    }
+}
+
+String getUserName() {
+    return getProp("ossrhUsername")
+}
+
+String getPassword() {
+    return getProp("ossrhPassword")
+}
+
 // Don't export documentation
 tasks.withType(Javadoc).all { enabled = false }
 
@@ -201,8 +219,8 @@ afterEvaluate {
                 name = "sonatype"
                 url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
                 credentials {
-                    username ossrhUsername ?: ""
-                    password ossrhPassword ?: ""
+                    username getUserName()
+                    password getPassword()
                 }
             }
         }
