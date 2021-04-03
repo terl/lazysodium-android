@@ -1,3 +1,7 @@
+# DEPRECATED.
+# Azure Pipelines has been deprecated in favour of
+# GitHub Actions. See the .github/workflows folder
+
 # Android
 # Build your Android project with Gradle.
 # Add steps that test, sign, and distribute the APK, save build artifacts, and more:
