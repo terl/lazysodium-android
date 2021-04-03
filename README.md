@@ -4,7 +4,7 @@
   
 Lazysodium is a **complete** Android implementation of the [Libsodium](https://github.com/jedisct1/libsodium) library that provides developers with a **smooth and effortless** cryptography experience. 
 
-[![Build Status](https://dev.azure.com/terl/lazysodium-android/_apis/build/status/terl.lazysodium-android?branchName=master)](https://dev.azure.com/terl/lazysodium-android/_build/latest?definitionId=2&branchName=master)
+![Checks](https://github.com/terl/lazysodium-android/actions/workflows/primary.yml/badge.svg)
 ![Maven Central](https://img.shields.io/maven-central/v/com.goterl/lazysodium-android?color=%23fff&label=Maven%20Central)
 
 ## Why Lazysodium
