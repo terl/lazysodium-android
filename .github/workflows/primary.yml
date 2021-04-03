@@ -13,7 +13,10 @@ jobs:
     name: Instrumentation checks
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkut
+        uses: actions/checkout@v2
+      - name: Checkout submodules
+        uses: textbook/git-checkout-submodule-action@master
       - name: Run instrumentation checks
         uses: reactivecircus/android-emulator-runner@v2
         with:
