@@ -11,12 +11,12 @@ on:
 jobs:
   test:
     name: Instrumentation checks
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkut
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Checkout submodules
-        uses: textbook/git-checkout-submodule-action@master
+        with:
+          submodules: recursive
       - name: Run instrumentation checks
         uses: reactivecircus/android-emulator-runner@v2
         with:
