@@ -17,7 +17,7 @@ plugins {
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl"
-    version = '5.0.0'
+    version = '5.0.1'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazysodium"
@@ -125,8 +125,8 @@ dependencies {
     })
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    implementation 'net.java.dev.jna:jna:5.5.0@aar'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'net.java.dev.jna:jna:5.8.0@aar'
 }
 
 Signature.metaClass.getToSignArtifact = { ->
