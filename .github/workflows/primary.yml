@@ -20,7 +20,7 @@ jobs:
       - name: Run instrumentation checks
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 28
           script: ./gradlew connectedAndroidTest
   publish:
     name: Publish to snapshot repo if master branch
