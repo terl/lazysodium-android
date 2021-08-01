@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+			android:id="@+id/action_item1"
+			android:icon="@drawable/about"
+			android:title="About"/>
+	<item
+			android:id="@+id/action_item2"
+			android:icon="@drawable/conflict"
+			android:title="Operations"/>
+
+	<item
+			android:id="@+id/action_item3"
+			android:icon="@drawable/user"
+			android:title="Credits"/>
+
+</menu>

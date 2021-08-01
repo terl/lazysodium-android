@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryL1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+	<LinearLayout android:layout_width="match_parent"
+	          android:orientation="vertical"
+              android:focusable="true"
+              android:id="@+id/parent"
+	          android:layout_height="wrap_content">
+
+		<androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
+		                                   android:id="@+id/toolbar"
+		                                   android:background="@color/colorPrimary"
+		                                   android:layout_height="?android:actionBarSize" />
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:background="@color/colorAccentL3"
+		              android:layout_height="1px" />
+
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:padding="30dp"
+		              android:orientation="vertical">
+
+
+			<TextView android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_gravity="center_horizontal"
+			          android:textColor="@color/colorAccentL4"
+			          android:gravity="start"
+			          android:textSize="32sp"
+			          android:textStyle="bold"
+			          android:layout_marginTop="26dp"
+			          android:text="Key derivation" />
+
+
+
+			<TextView android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_gravity="center_horizontal"
+			          android:gravity="start"
+			          android:textSize="16sp"
+			          android:layout_marginTop="8dp"
+			          android:text="@string/key_derivation_intro" />
+
+
+
+			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
+					android:layout_marginTop="32dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
+						android:id="@+id/master_key"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:hint="Your random master key" />
+
+			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
+
+
+			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
+					android:layout_marginTop="16dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
+						android:inputType="none"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/subkey_1"
+						android:hint="Subkey 1" />
+
+			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
+
+			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
+					android:layout_marginTop="16dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
+						android:inputType="none"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/subkey_2"
+						android:hint="Subkey 2" />
+
+			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
+
+			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
+					android:layout_marginTop="16dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
+						android:inputType="none"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/subkey_3"
+						android:hint="Subkey 3" />
+
+			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
+
+
+
+		</LinearLayout>
+
+
+
+	</LinearLayout>
+
+
+
+
+</ScrollView>

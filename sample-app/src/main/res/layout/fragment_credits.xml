@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<androidx.core.widget.NestedScrollView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	<androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+	                                              android:orientation="vertical"
+	                                              android:layout_height="match_parent">
+
+		<androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+		                                             android:layout_height="wrap_content"
+		                                             android:textSize="30sp"
+		                                             style="@style/Heading"
+		                                             android:paddingTop="54dp"
+		                                             android:paddingStart="18dp"
+		                                             android:paddingEnd="18dp"
+		                                             android:text="Credits"
+		                                             android:id="@+id/title"/>
+
+
+		<android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+		                                        android:id="@+id/list"
+		                                        android:paddingStart="12dp"
+		                                        android:paddingEnd="12dp"
+		                                        android:paddingLeft="12dp"
+		                                        android:paddingRight="12dp"
+		                                        android:orientation="vertical"
+		                                        android:layout_height="wrap_content" />
+
+	</androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>

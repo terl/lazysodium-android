@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="colorPrimaryL5">#ffd6dc</color>
+	<color name="colorPrimaryL4">#faa6b4</color>
+	<color name="colorPrimaryL3">#ed6980</color>
+	<color name="colorPrimaryL2">#e23b58</color>
+	<color name="colorPrimaryL1">#cf2845</color>
+	<color name="colorPrimary">#C41E3A</color>
+	<color name="colorPrimaryD1">#b11d36</color>
+	<color name="colorPrimaryD2">#9c142b</color>
+
+	<color name="colorAccentL5">#eafffe</color>
+	<color name="colorAccentL4">#acf1ee</color>
+	<color name="colorAccentL3">#80ede9</color>
+	<color name="colorAccentL2">#42dfd8</color>
+	<color name="colorAccentL1">#17d2c9</color>
+	<color name="colorAccent">#0bbcb3</color>
+
+	<color name="white">#ffffff</color>
+	<color name="whiteD1">#f9f9f9</color>
+
+
+	<color name="snow">#ededed</color>
+	<color name="snowD1">#d9d9d9</color>
+	<color name="snowD2">#d4d4d4</color>
+	<color name="snowD3">#cacaca</color>
+	<color name="snowD4">#c2c2c2</color>
+	<color name="snowD5">#bcbcbc</color>
+
+	<color name="grayL5">#9c9c9c</color>
+	<color name="grayL4">#939393</color>
+	<color name="grayL3">#8b8b8b</color>
+	<color name="grayL2">#818181</color>
+	<color name="grayL1">#7b7b7b</color>
+	<color name="gray">#707070</color>
+
+	<color name="black">#000</color>
+</resources>

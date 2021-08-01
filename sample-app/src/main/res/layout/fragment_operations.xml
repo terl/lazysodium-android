@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+		android:background="@color/colorPrimaryL5"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" xmlns:card_view="http://schemas.android.com/apk/res-auto" >
+
+
+	<LinearLayout android:layout_width="match_parent"
+	              android:orientation="vertical"
+	              android:layout_height="match_parent">
+
+
+		<androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+		                                             android:layout_height="wrap_content"
+		                                             android:textSize="30sp"
+		                                             style="@style/Heading"
+		                                             android:paddingTop="54dp"
+		                                             android:paddingStart="18dp"
+		                                             android:paddingEnd="18dp"
+		                                             android:text="Operations"
+		                                             android:id="@+id/title"/>
+
+
+		<androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+		                                           android:layout_height="match_parent"
+		                                           android:paddingTop="16dp"
+		                                           android:paddingBottom="16dp"
+		                                           android:clipToPadding="false"
+		                                           android:id="@+id/list"
+		                                           android:orientation="vertical" />
+
+	</LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

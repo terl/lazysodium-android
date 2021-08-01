@@ -1,0 +1,36 @@
+<resources>
+	<string name="app_name">Lazysodium</string>
+	<string name="text_intro">
+		Lazysodium is an effortless and easy-to-use open-source cryptography library for Java and Android.
+		It\'s based on Libsodium, which is an excellent audited open-source C cryptography library.
+		\n\nThis app\'s purpose is to show you the capabilities of Lazysodium for Android and Libsodium.
+	</string>
+
+	<string name="symmetric_intro">
+		Symmetric key encryption means that you encrypt and decrypt a message
+		using one key. It\'s faster and less complicated than asymmetric
+		key encryption, which usually requires at least 4 keys.
+	</string>
+
+	<string name="asymmetric_intro">
+		Asymmetric key encryption means you can encrypt using a public-private keypair.
+		You can publish your keypair\'s public key to anyone and they can
+		use it to encrypt messages to you, which only you can decrypt.
+	</string>
+
+	<string name="generic_hash_intro">
+		Generic hashing hashes a given string or a file. You can supply
+		a key making a deterministic hash too.
+	</string>
+
+	<string name="pw_hash_intro">
+		Using Argon2, we can securely hash a password. Use this
+		instead of Generic Hashing to create theoretically unbreakable password hashes.
+	</string>
+
+
+	<string name="key_derivation_intro">
+		You can create several subkeys from one master key. This can
+		help with key organisation, and in some cases, security.
+	</string>
+</resources>

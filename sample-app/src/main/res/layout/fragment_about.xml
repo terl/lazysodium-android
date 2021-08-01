@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:diagonal="http://schemas.android.com/apk/res-auto"
+            android:background="@color/colorPrimaryL5"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+	<LinearLayout android:layout_width="match_parent"
+	              android:orientation="vertical"
+	              android:paddingTop="80dp"
+	             android:layout_height="wrap_content">
+
+
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/colorPrimaryL4"
+				android:scaleType="centerCrop" />
+
+		<androidx.appcompat.widget.AppCompatImageView
+				android:layout_width="180dp"
+				android:layout_gravity="center"
+				android:scaleType="fitCenter"
+				android:tint="@color/black"
+				android:layout_height="90dp"
+				android:src="@drawable/large_logo"/>
+
+
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:maxWidth="300dp"
+		              android:paddingTop="24dp"
+		              android:paddingBottom="44dp"
+		              android:orientation="vertical">
+
+
+			<TextView android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_marginStart="24dp"
+			          android:layout_marginEnd="24dp"
+			          android:layout_marginLeft="24dp"
+			          android:layout_marginRight="24dp"
+			          android:layout_gravity="center_horizontal"
+			          android:textColor="@color/black"
+			          android:gravity="start"
+			          android:textSize="16sp"
+			          android:text="@string/text_intro"/>
+
+
+		</LinearLayout>
+
+
+	</LinearLayout>
+
+
+
+</ScrollView>

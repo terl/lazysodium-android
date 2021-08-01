@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryL1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+	<LinearLayout android:layout_width="match_parent"
+	          android:orientation="vertical"
+              android:focusable="true"
+              android:id="@+id/parent"
+	          android:layout_height="wrap_content">
+
+		<androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
+		                                   android:id="@+id/toolbar"
+		                                   android:background="@color/colorPrimary"
+		                                   android:layout_height="?android:actionBarSize" />
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:background="@color/colorAccentL3"
+		              android:layout_height="1px" />
+
+
+		<LinearLayout android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:padding="30dp"
+		              android:orientation="vertical">
+
+
+			<TextView android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_gravity="center_horizontal"
+			          android:textColor="@color/colorAccentL4"
+			          android:gravity="start"
+			          android:textSize="32sp"
+			          android:textStyle="bold"
+			          android:layout_marginTop="26dp"
+			          android:text="Asymmetric Key Encryption" />
+
+
+
+			<TextView android:layout_width="match_parent"
+			          android:layout_height="wrap_content"
+			          android:layout_gravity="center_horizontal"
+			          android:gravity="start"
+			          android:textSize="16sp"
+			          android:layout_marginTop="8dp"
+			          android:text="@string/asymmetric_intro" />
+
+			<LinearLayout android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:orientation="vertical"
+			              android:layout_marginTop="32dp">
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="16sp"
+						android:textColor="@color/colorAccentL3"
+						android:text="Your keypair" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:layout_marginTop="6dp"
+						android:text="Private key"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="14sp" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/tv_your_private_key"
+						android:layout_marginTop="6dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="12sp" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:layout_marginTop="8dp"
+						android:text="Public key"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="14sp" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/tv_your_public_key"
+						android:layout_marginTop="6dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="12sp" />
+
+
+			</LinearLayout>
+
+
+			<LinearLayout android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:orientation="vertical"
+			              android:layout_marginTop="32dp">
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="16sp"
+						android:textColor="@color/colorAccentL3"
+						android:text="Bob's keypair" />
+
+
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:layout_marginTop="6dp"
+						android:text="Private key"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="14sp" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/tv_bob_private_key"
+						android:layout_marginTop="6dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="12sp" />
+
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:layout_marginTop="8dp"
+						android:text="Public key"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="14sp" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/tv_bob_public_key"
+						android:layout_marginTop="6dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="12sp" />
+
+
+			</LinearLayout>
+
+
+			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
+					android:layout_marginTop="22dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
+						android:id="@+id/et_message"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:hint="Send a message to Bob" />
+
+			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
+
+
+			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
+					android:layout_marginTop="16dp"
+					android:id="@+id/cipher_layout"
+					android:visibility="gone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
+						android:id="@+id/et_cipher"
+						android:inputType="none"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:hint="The resulting encrypted text" />
+
+			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
+
+			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
+					android:layout_marginTop="16dp"
+					android:id="@+id/final_note"
+					android:visibility="gone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:hint="Final note"
+						android:text="You can store the nonce and the encrypted text together. As long as the recipient has their secret key, they can decrypt any message encrypted via their public key." />
+
+			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
+
+
+
+		</LinearLayout>
+
+
+
+	</LinearLayout>
+
+
+
+
+</ScrollView>
