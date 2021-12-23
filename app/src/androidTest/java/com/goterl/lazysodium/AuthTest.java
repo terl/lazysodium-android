@@ -13,11 +13,13 @@ import com.goterl.lazysodium.interfaces.Auth;
 import com.goterl.lazysodium.utils.Key;
 import junit.framework.TestCase;
 import org.junit.Test;
+import org.junit.internal.runners.JUnit38ClassRunner;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertTrue;
 
+@RunWith(JUnit38ClassRunner.class)
 public class AuthTest extends BaseTest {
-
 
     @Test
     public void auth256KeygenAndVerify() {

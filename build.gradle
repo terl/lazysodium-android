@@ -15,6 +15,10 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven {
+            name = "snapshot"
+            url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.0'

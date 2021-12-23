@@ -12,7 +12,7 @@ android {
         multiDexEnabled true
         versionCode 9
         versionName "0.6.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
