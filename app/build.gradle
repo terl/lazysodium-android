@@ -28,14 +28,19 @@ group project.ext.groupId
 version = project.ext.version
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 16
         versionName project.ext.version
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Typically we would need to clear data between every run
+        // but we don't need to in this test suite as we aren't
+        // running conventional espresso tests. Speeds up tests 2x.
+        // testInstrumentationRunnerArguments clearPackageData: 'true'
     }
     buildTypes {
         release {
@@ -68,6 +73,11 @@ android {
 
     packagingOptions {
         exclude '../lazysodium-java/src/test/java'
+    }
+
+    testOptions {
+        animationsDisabled = true
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
     }
 }
 
