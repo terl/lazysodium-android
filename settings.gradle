@@ -7,4 +7,3 @@
  */
 
 include ':app'
-include ":sample-app"

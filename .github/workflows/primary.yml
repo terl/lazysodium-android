@@ -21,7 +21,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 28
-          script: ./gradlew connectedAndroidTest
+          script: ./gradlew :app:connectedAndroidTest
   publish:
     name: Publish to snapshot repo if master branch
     runs-on: ubuntu-latest

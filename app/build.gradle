@@ -28,11 +28,11 @@ group project.ext.groupId
 version = project.ext.version
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 32
+    buildToolsVersion "32.0.0"
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 16
         versionName project.ext.version
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -130,15 +130,13 @@ tasks.withType(Test) {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'net.java.dev.jna:jna:5.8.0@aar'
+    implementation 'net.java.dev.jna:jna:5.9.0@aar'
 
-
-
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2", {
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2", {
         exclude group: "com.android.support", module: "support-annotations"
     })
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation "androidx.test:runner:1.4.1-alpha03"
+    androidTestImplementation "androidx.test:rules:1.4.1-alpha03"
     testImplementation 'junit:junit:4.13.2'
 }
 
