@@ -29,7 +29,7 @@ version = project.ext.version
 
 android {
     compileSdkVersion 32
-    buildToolsVersion "32.0.0"
+    buildToolsVersion "31.0.0"
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion 32
