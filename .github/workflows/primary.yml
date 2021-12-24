@@ -12,6 +12,10 @@ jobs:
   test:
     name: Instrumentation checks
     runs-on: macos-latest
+    strategy:
+      matrix:
+        arch: [x86, x86_64]
+        api-level: [21, 29]
     steps:
       - name: Checkout (recursive)
         uses: actions/checkout@v2
@@ -20,7 +24,7 @@ jobs:
       - name: Run instrumentation checks
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 28
+          api-level: ${{ matrix.api-level }}
           script: ./gradlew :app:connectedAndroidTest
   publish:
     name: Publish to snapshot repo if master branch
