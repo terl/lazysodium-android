@@ -14,8 +14,8 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        arch: [x86, x86_64]
-        api-level: [21, 29]
+        arch: [x86, x86_64, arm, arm64]
+        api-level: [21, 33]
     steps:
       - name: Checkout (recursive)
         uses: actions/checkout@v3
@@ -37,9 +37,9 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/master' && always()
     steps:
-      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: technote-space/workflow-conclusion-action@v3
       - name: Checkout (recursive)
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
         if: env.WORKFLOW_CONCLUSION == 'success'
