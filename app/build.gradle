@@ -38,7 +38,7 @@ android {
     compileSdkVersion 33
     buildToolsVersion "30.0.3"
     defaultConfig {
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 33
         versionCode 16
         multiDexEnabled true
