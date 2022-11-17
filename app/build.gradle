@@ -24,23 +24,24 @@ ext {
     javaTestDir = "../lazysodium-java/src/test/java/com/goterl/lazysodium"
 
     jUnitVersion = "4.13.2"
-    androidXJUnitVersion = "1.1.3"
-    androidXEspressoVersion = "3.3.0"
+    androidXJUnitVersion = "1.1.4"
+    androidXEspressoVersion = "3.5.0"
     androidXTestingCoreVersion = "2.1.0"
-    androidXTestCoreVersion = "1.4.0"
-    kotlinCoroutinesVersion = "1.5.2"
+    androidXTestCoreVersion = "1.5.0"
+    kotlinCoroutinesVersion = "1.6.4"
 }
 
 group project.ext.groupId
 version = project.ext.version
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     buildToolsVersion "30.0.3"
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 16
+        multiDexEnabled true
         versionName project.ext.version
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -137,7 +138,7 @@ tasks.withType(Test) {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'net.java.dev.jna:jna:5.9.0@aar'
+    implementation 'net.java.dev.jna:jna:5.12.1@aar'
 
     // Test libs
     testImplementation "junit:junit:$jUnitVersion"
@@ -150,7 +151,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidXJUnitVersion"
     androidTestImplementation "androidx.test:rules:$androidXTestCoreVersion"
     androidTestImplementation "androidx.test:runner:$androidXTestCoreVersion"
-    androidTestUtil "androidx.test:orchestrator:$androidXTestCoreVersion"
+    androidTestUtil "androidx.test:orchestrator:1.4.2"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidXEspressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidXEspressoVersion"
     androidTestImplementation "androidx.arch.core:core-testing:$androidXTestingCoreVersion"
