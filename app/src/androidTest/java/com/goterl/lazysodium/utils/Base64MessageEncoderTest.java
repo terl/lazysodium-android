@@ -26,6 +26,6 @@ public class Base64MessageEncoderTest extends BaseTest {
         byte[] plainText = encoder.decode(cipherText);
         String plain = new String(plainText, StandardCharsets.UTF_8);
         assertEquals(expected, plain);
-        assertEquals(cipherText, encoder.encode(expected.getBytes(StandardCharsets.ISO_8859_1)));
+        assertEquals(cipherText, encoder.encode(expected.getBytes(StandardCharsets.UTF_8)));
     }
 }
