@@ -20,7 +20,7 @@ You can find an up-to-date feature list [here](https://github.com/terl/lazysodiu
 
 ## Quick start
 
-This is by no means a comprehensive introduction to Lazysodium. Please view the [official documentation](https://terl.gitbook.io/lazysodium/usage/installation) for a more comprehensive guide.
+This is by no means a comprehensive introduction to Lazysodium. Please view the [official documentation](https://github.com/terl/lazysodium-java/wiki) for a more comprehensive guide.
 
 Whatever build tool you're using the general gist is to add the `mavenCentral()` repository and then add the Lazysodium dependency.
 More detailed instructions [here](https://github.com/terl/lazysodium-java/wiki/installation).
