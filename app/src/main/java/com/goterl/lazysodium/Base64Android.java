@@ -15,11 +15,11 @@ class Base64Android implements Base64Facade {
 
     @Override
     public String encode(byte[] cipher) {
-        return Base64.encodeToString(cipher, Base64.DEFAULT);
+        return Base64.encodeToString(cipher, Base64.NO_WRAP);
     }
 
     @Override
     public byte[] decode(String cipherText) {
-        return Base64.decode(cipherText, Base64.DEFAULT);
+        return Base64.decode(cipherText, Base64.NO_WRAP);
     }
 }
