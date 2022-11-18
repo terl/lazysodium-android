@@ -12,10 +12,8 @@ import com.sun.jna.Native;
 
 public class SodiumAndroid extends com.goterl.lazysodium.Sodium {
 
-
     public SodiumAndroid() {
         this("sodium");
-        onRegistered();
     }
 
     /**
@@ -35,6 +33,7 @@ public class SodiumAndroid extends com.goterl.lazysodium.Sodium {
         // such as x86 or x86_64 etc.
         Native.register(Sodium.class, path);
         Native.register(SodiumAndroid.class, path);
+        base64Facade = new Base64Android();
         onRegistered();
     }
 
