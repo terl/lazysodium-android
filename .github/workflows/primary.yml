@@ -39,7 +39,7 @@ jobs:
           target: google_apis
           arch: ${{ matrix.arch }}
           profile: Nexus 6
-          script: ./gradlew connectedCheck
+          script: ./gradlew connectedCheck --info
   publish:
     name: Publish to snapshot repo if master branch
     runs-on: ubuntu-latest
