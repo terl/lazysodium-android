@@ -28,7 +28,7 @@ ext {
     androidXJUnitVersion = "1.2.1"
     androidXEspressoVersion = "3.6.1"
     androidXTestingCoreVersion = "2.2.0"
-    androidXTestCoreVersion = "1.6.2"
+    androidXTestCoreVersion = "1.6.1"
     kotlinCoroutinesVersion = "1.10.2"
 }
 
@@ -38,9 +38,9 @@ version = project.ext.version
 android {
     compileSdk 36
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdk 36
-        versionCode 16
+        versionCode 17
         multiDexEnabled true
         versionName project.ext.version
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -143,7 +143,7 @@ tasks.withType(Test) {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'net.java.dev.jna:jna:5.12.1@aar'
+    implementation 'net.java.dev.jna:jna:5.17.0@aar'
     implementation 'androidx.core:core-ktx:1.16.0'
 
     // Test libs
@@ -157,7 +157,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidXJUnitVersion"
     androidTestImplementation "androidx.test:rules:$androidXTestCoreVersion"
     androidTestImplementation "androidx.test:runner:$androidXTestCoreVersion"
-    androidTestUtil "androidx.test:orchestrator:1.4.2"
+    androidTestUtil "androidx.test:orchestrator:1.5.1"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidXEspressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidXEspressoVersion"
     androidTestImplementation "androidx.arch.core:core-testing:$androidXTestingCoreVersion"
