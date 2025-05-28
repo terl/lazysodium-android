@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     name: Instrumentation checks
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         arch: [x86, x86_64, arm64-v8a]
