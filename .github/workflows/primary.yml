@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     name: Instrumentation checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04-arm
     strategy:
       matrix:
         arch: [x86, x86_64, arm64-v8a]
