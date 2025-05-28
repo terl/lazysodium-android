@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         arch: [x86, x86_64, arm64-v8a]
-        api-level: [21, 35]
+        api-level: [21, 29]
     steps:
       - name: Checkout (recursive)
         uses: actions/checkout@v4
