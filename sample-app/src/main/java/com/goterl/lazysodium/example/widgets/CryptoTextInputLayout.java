@@ -28,6 +28,7 @@ public class CryptoTextInputLayout extends TextInputLayout {
         ColorStateList hintColor = ContextCompat.getColorStateList(getContext(), R.color.colorAccentL4);
         setDefaultHintTextColor(hintColor);
         setHintTextAppearance(R.style.TextInputLayoutTheme);
+        setExpandedHintEnabled(true);
     }
 
 

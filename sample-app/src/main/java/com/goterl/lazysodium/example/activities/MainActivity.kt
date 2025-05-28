@@ -1,87 +1,79 @@
-package com.goterl.lazysodium.example.activities;
+package com.goterl.lazysodium.example.activities
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.goterl.lazysodium.example.R;
-import com.goterl.lazysodium.example.fragments.AboutFragment;
-import com.goterl.lazysodium.example.fragments.CreditsFragment;
-import com.goterl.lazysodium.example.fragments.OperationsFragment;
+import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.goterl.lazysodium.example.R
+import com.goterl.lazysodium.example.fragments.AboutFragment
+import com.goterl.lazysodium.example.fragments.CreditsFragment
+import com.goterl.lazysodium.example.fragments.OperationsFragment
 
-public class MainActivity extends AppCompatActivity {
+class MainActivity : AppCompatActivity() {
+    private val overlay: View? = null
 
-    private static final String TAG = "MainActivity";
-    private View overlay;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
-            switch (item.getItemId()) {
-                case R.id.action_item1:
-                    selectedFragment = AboutFragment.newInstance();
-                    break;
-                case R.id.action_item2:
-                    selectedFragment = OperationsFragment.newInstance();
-                    break;
-                case R.id.action_item3:
-                    selectedFragment = CreditsFragment.newInstance();
-                    break;
+        bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
+            var selectedFragment: Fragment? = null
+            val id = item.itemId
+            if (id == R.id.action_item1) {
+                selectedFragment = AboutFragment.newInstance()
             }
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout, selectedFragment);
-            transaction.commit();
-            return true;
-        });
+            if (id == R.id.action_item2) {
+                selectedFragment = OperationsFragment.newInstance()
+            }
+            if (id == R.id.action_item3) {
+                selectedFragment = CreditsFragment.newInstance()
+            }
+            val transaction =
+                supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.frame_layout, selectedFragment!!)
+            transaction.commit()
+            true
+        }
 
         //Manually displaying the first fragment - one time only
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, AboutFragment.newInstance());
-        transaction.commit();
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_layout, AboutFragment.newInstance())
+        transaction.commit()
 
-        bottomNavigationView.getMenu().getItem(0).setChecked(true);
-
-
-
+        bottomNavigationView.menu.getItem(0).setChecked(true)
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (overlay != null && overlay.getVisibility() == View.VISIBLE) {
-            Animation fadeOut = new AlphaAnimation(1, 0);
-            fadeOut.setInterpolator(new AccelerateInterpolator());
-            overlay.startAnimation(fadeOut);
-            fadeOut.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-
+    override fun onResume() {
+        super.onResume()
+        if (overlay != null && overlay.visibility == View.VISIBLE) {
+            val fadeOut: Animation = AlphaAnimation(1f, 0f)
+            fadeOut.interpolator = AccelerateInterpolator()
+            overlay.startAnimation(fadeOut)
+            fadeOut.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation) {
                 }
 
-                @Override
-                public void onAnimationEnd(Animation animation) {
+                override fun onAnimationEnd(animation: Animation) {
                     if (overlay != null) {
-                        overlay.setVisibility(View.GONE);
+                        overlay.visibility = View.GONE
                     }
                 }
 
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
+                override fun onAnimationRepeat(animation: Animation) {
                 }
-            });
+            })
         }
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }

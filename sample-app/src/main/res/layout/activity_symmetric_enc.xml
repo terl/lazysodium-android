@@ -51,28 +51,28 @@
 
 			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
 					android:layout_marginTop="32dp"
+					android:hint="Your symmetric key"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
 
 				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
 						android:id="@+id/et_key"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:hint="Your symmetric key" />
+						android:layout_height="wrap_content" />
 
 			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
 
 
 			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
 					android:layout_marginTop="16dp"
+					android:hint="Type a message to encrypt"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
 
 				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
 						android:id="@+id/et_message"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:hint="Type a message to encrypt" />
+						android:layout_height="wrap_content" />
 
 			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
 
@@ -80,6 +80,7 @@
 			<com.goterl.lazysodium.example.widgets.CryptoTextInputLayout
 					android:layout_marginTop="16dp"
 					android:id="@+id/cipher_layout"
+					android:hint="The resulting encrypted text"
 					android:visibility="gone"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
@@ -88,8 +89,7 @@
 						android:id="@+id/et_cipher"
 						android:inputType="none"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:hint="The resulting encrypted text" />
+						android:layout_height="wrap_content" />
 
 			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>
 
@@ -97,13 +97,13 @@
 					android:layout_marginTop="16dp"
 					android:id="@+id/final_note"
 					android:visibility="gone"
+					android:hint="Final note"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
 
 				<com.goterl.lazysodium.example.widgets.CryptoTextInputEditText
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:hint="Final note"
 						android:text="As long as you have the symmetric key and the nonce used for encryption, you can always decrypt any message encrypted using this symmetric key." />
 
 			</com.goterl.lazysodium.example.widgets.CryptoTextInputLayout>

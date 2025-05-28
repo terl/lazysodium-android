@@ -12,6 +12,7 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
     id 'signing'
+    id 'org.jetbrains.kotlin.android'
 }
 
 ext {
@@ -24,22 +25,21 @@ ext {
     javaTestDir = "../lazysodium-java/src/test/java/com/goterl/lazysodium"
 
     jUnitVersion = "4.13.2"
-    androidXJUnitVersion = "1.1.4"
-    androidXEspressoVersion = "3.5.0"
-    androidXTestingCoreVersion = "2.1.0"
-    androidXTestCoreVersion = "1.5.0"
-    kotlinCoroutinesVersion = "1.6.4"
+    androidXJUnitVersion = "1.2.1"
+    androidXEspressoVersion = "3.6.1"
+    androidXTestingCoreVersion = "2.2.0"
+    androidXTestCoreVersion = "1.6.2"
+    kotlinCoroutinesVersion = "1.10.2"
 }
 
 group project.ext.groupId
 version = project.ext.version
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion "30.0.3"
+    compileSdk 36
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 33
+        targetSdk 36
         versionCode 16
         multiDexEnabled true
         versionName project.ext.version
@@ -70,9 +70,11 @@ android {
         }
     }
 
+    namespace "com.goterl.lazysodium"
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
 
     lintOptions {
@@ -86,6 +88,9 @@ android {
     testOptions {
         animationsDisabled = true
         execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
+    kotlinOptions {
+        jvmTarget = '21'
     }
 }
 
@@ -139,6 +144,7 @@ tasks.withType(Test) {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'net.java.dev.jna:jna:5.12.1@aar'
+    implementation 'androidx.core:core-ktx:1.16.0'
 
     // Test libs
     testImplementation "junit:junit:$jUnitVersion"
@@ -170,7 +176,7 @@ signing {
 }
 
 task sourcesJar(type: Jar) {
-    classifier = 'sources'
+    archiveClassifier = 'sources'
     from android.sourceSets.main.java.srcDirs
 }
 
@@ -180,7 +186,7 @@ task javadoc(type: Javadoc) {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
 

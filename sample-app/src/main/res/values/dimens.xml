@@ -3,5 +3,5 @@
 	<dimen name="fab_margin">16dp</dimen>
 	<dimen name="text_margin">16dp</dimen>
 
-	<dimen name="edit_text_hint_space">4dp</dimen>
+	<dimen name="edit_text_hint_space">26dp</dimen>
 </resources>

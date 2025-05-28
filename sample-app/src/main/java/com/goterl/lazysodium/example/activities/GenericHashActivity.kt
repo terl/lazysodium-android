@@ -1,91 +1,86 @@
-package com.goterl.lazysodium.example.activities;
+package com.goterl.lazysodium.example.activities
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import com.goterl.lazysodium.LazySodiumAndroid;
-import com.goterl.lazysodium.SodiumAndroid;
-import com.goterl.lazysodium.example.R;
-import com.goterl.lazysodium.exceptions.SodiumException;
-import com.goterl.lazysodium.interfaces.GenericHash;
-import com.goterl.lazysodium.interfaces.PwHash;
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.view.View
+import android.widget.EditText
+import com.goterl.lazysodium.LazySodiumAndroid
+import com.goterl.lazysodium.SodiumAndroid
+import com.goterl.lazysodium.example.R
+import com.goterl.lazysodium.exceptions.SodiumException
+import com.goterl.lazysodium.interfaces.GenericHash
+import com.goterl.lazysodium.interfaces.PwHash
 
-public class GenericHashActivity extends com.goterl.lazysodium.example.activities.BaseActivity implements TextWatcher {
-
-
-    private EditText cipherTv;
-    private View cipherLayout;
-    private EditText etMessage;
-    private GenericHash.Lazy gh;
+class GenericHashActivity : BaseActivity(), TextWatcher {
+    private lateinit var cipherTv: EditText
+    private lateinit var cipherLayout: View
+    private lateinit var etMessage: EditText
+    private lateinit var gh: GenericHash.Lazy
 
     @SuppressLint("AndroidLogDetector")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_generic_hash);
-        setupToolbar("Generic hash");
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_generic_hash)
+        setupToolbar("Generic hash")
 
-        cipherTv = findViewById(R.id.et_cipher);
-        cipherLayout = findViewById(R.id.cipher_layout);
-        etMessage = findViewById(R.id.et_message);
+        cipherTv = findViewById(R.id.et_cipher)
+        cipherLayout = findViewById(R.id.cipher_layout)
+        etMessage = findViewById(R.id.et_message)
 
-        etMessage.addTextChangedListener(this);
+        etMessage.addTextChangedListener(this)
 
-        gh = (GenericHash.Lazy) ls;
+        gh = ls as GenericHash.Lazy
 
-        LazySodiumAndroid ls = new LazySodiumAndroid(new SodiumAndroid());
-        byte[] salt = ls.randomBytesBuf(PwHash.SALTBYTES);
+        val ls = LazySodiumAndroid(SodiumAndroid())
+        val salt = ls.randomBytesBuf(PwHash.SALTBYTES)
 
-        byte[] outputHash = ls.randomBytesBuf(32);
-        int outputHashLen = outputHash.length;
+        val outputHash = ls.randomBytesBuf(32)
+        val outputHashLen = outputHash.size
 
-        Log.e("Test", ls.str(outputHash));
-        Log.e("Test", ls.toHexStr(outputHash));
+        Log.e("Test", ls.str(outputHash))
+        Log.e("Test", ls.toHexStr(outputHash))
 
-        byte[] password = ls.bytes("123456");
-        int passwordLen = password.length;
+        val password = ls.bytes("123456")
+        val passwordLen = password.size
 
-        int res = ls.getSodium().crypto_pwhash(outputHash,
-                outputHashLen,
-                password,
-                passwordLen,
-                salt,
-                PwHash.OPSLIMIT_MIN,
-                PwHash.MEMLIMIT_INTERACTIVE,
-                PwHash.Alg.getDefault().getValue());
+        val res = ls.sodium.crypto_pwhash(
+            outputHash,
+            outputHashLen.toLong(),
+            password,
+            passwordLen.toLong(),
+            salt,
+            PwHash.OPSLIMIT_MIN,
+            PwHash.MEMLIMIT_INTERACTIVE,
+            PwHash.Alg.getDefault().value
+        )
         if (res == 0) {
-            Log.e("S", "Successful hashing.");
+            Log.e("S", "Successful hashing.")
         }
 
-        Log.e("Test", ls.str(outputHash));
-        Log.e("Test", ls.toHexStr(outputHash));
+        Log.e("Test", ls.str(outputHash))
+        Log.e("Test", ls.toHexStr(outputHash))
     }
 
 
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+    override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+    override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
-    @Override
-    public void afterTextChanged(Editable editable) {
+    override fun afterTextChanged(editable: Editable) {
         try {
-            String cipherText = gh.cryptoGenericHash(editable.toString());
-            cipherTv.setText(cipherText);
-        } catch (SodiumException e) {
-            e.printStackTrace();
+            val cipherText = gh!!.cryptoGenericHash(editable.toString())
+            cipherTv!!.setText(cipherText)
+        } catch (e: SodiumException) {
+            e.printStackTrace()
         } finally {
-            if (editable.toString().length() == 0) {
-                cipherLayout.setVisibility(View.GONE);
+            if (editable.toString().length == 0) {
+                cipherLayout!!.visibility = View.GONE
             } else {
-                cipherLayout.setVisibility(View.VISIBLE);
+                cipherLayout!!.visibility = View.VISIBLE
             }
         }
     }
-
 }

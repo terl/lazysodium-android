@@ -1,59 +1,55 @@
-package com.goterl.lazysodium.example.activities;
+package com.goterl.lazysodium.example.activities
 
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.goterl.lazysodium.example.R;
-import com.goterl.lazysodium.exceptions.SodiumException;
-import com.goterl.lazysodium.interfaces.PwHash;
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.widget.EditText
+import com.goterl.lazysodium.example.R
+import com.goterl.lazysodium.exceptions.SodiumException
+import com.goterl.lazysodium.interfaces.PwHash
 
-public class PasswordHashActivity extends BaseActivity implements TextWatcher {
+class PasswordHashActivity : BaseActivity(), TextWatcher {
+    private lateinit var cipherTv: EditText
+    private lateinit var cipherLayout: View
+    private lateinit var etMessage: EditText
+    private lateinit var pwHash: PwHash.Lazy
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_password_hash)
+        setupToolbar("Generic hash")
 
-    private EditText cipherTv;
-    private View cipherLayout;
-    private EditText etMessage;
-    private PwHash.Lazy pwHash;
+        cipherTv = findViewById(R.id.et_cipher)
+        cipherLayout = findViewById(R.id.cipher_layout)
+        etMessage = findViewById(R.id.et_message)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password_hash);
-        setupToolbar("Generic hash");
+        etMessage.addTextChangedListener(this)
 
-        cipherTv = findViewById(R.id.et_cipher);
-        cipherLayout = findViewById(R.id.cipher_layout);
-        etMessage = findViewById(R.id.et_message);
-
-        etMessage.addTextChangedListener(this);
-
-        pwHash = (PwHash.Lazy) ls;
-
+        pwHash = ls as PwHash.Lazy
     }
 
 
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+    override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+    override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
-    @Override
-    public void afterTextChanged(Editable editable) {
+    override fun afterTextChanged(editable: Editable) {
         try {
-            String cipherText = pwHash.cryptoPwHashStrRemoveNulls(editable.toString(), PwHash.OPSLIMIT_MIN, PwHash.MEMLIMIT_MIN);
-            cipherTv.setText(cipherText);
-        } catch (SodiumException e) {
-            e.printStackTrace();
+            val cipherText = pwHash!!.cryptoPwHashStrRemoveNulls(
+                editable.toString(),
+                PwHash.OPSLIMIT_MIN,
+                PwHash.MEMLIMIT_MIN
+            )
+            cipherTv!!.setText(cipherText)
+        } catch (e: SodiumException) {
+            e.printStackTrace()
         } finally {
-            if (editable.toString().length() == 0) {
-                cipherLayout.setVisibility(View.GONE);
+            if (editable.toString().length == 0) {
+                cipherLayout!!.visibility = View.GONE
             } else {
-                cipherLayout.setVisibility(View.VISIBLE);
+                cipherLayout!!.visibility = View.VISIBLE
             }
         }
     }
-
 }
