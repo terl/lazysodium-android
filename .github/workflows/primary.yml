@@ -16,7 +16,7 @@ jobs:
       matrix:
 #        arch: [x86, x86_64, arm64-v8a]
         arch: [x86, x86_64]
-        api-level: [21, 29]
+        api-level: [22, 29]
     steps:
       - name: Checkout (recursive)
         uses: actions/checkout@v4
