@@ -40,11 +40,11 @@ jobs:
           script: ./gradlew connectedCheck --info
   test2:
     name: Instrumentation checks part 2
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         arch: [x86_64, arm64-v8a]
-        api-level: [21, 35]
+        api-level: [24, 35]
     steps:
       - name: Checkout (recursive)
         uses: actions/checkout@v4
