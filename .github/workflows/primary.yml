@@ -11,12 +11,11 @@ on:
 jobs:
   test:
     name: Instrumentation checks
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
-#        arch: [x86, x86_64, arm64-v8a]
-        arch: [x86, x86_64]
-        api-level: [24, 34]
+        arch: [x86-24, x86_64, arm64-v8a]
+        api-level: [24, 29]
     steps:
       - name: Checkout (recursive)
         uses: actions/checkout@v4
@@ -27,11 +26,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '21'
-      - name: Enable KVM
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
       - name: Run instrumentation checks
         uses: reactivecircus/android-emulator-runner@v2
         with:
