@@ -14,7 +14,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        arch: [x86-24, x86_64, arm64-v8a]
+        arch: [x86, x86_64, arm64-v8a]
         api-level: [24, 29]
     steps:
       - name: Checkout (recursive)
