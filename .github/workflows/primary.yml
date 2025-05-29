@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [x86]
+        arch: [x86, x86_64]
         api-level: [24, 29]
     steps:
       - name: Checkout (recursive)
@@ -40,11 +40,11 @@ jobs:
           script: ./gradlew connectedCheck --info
   test2:
     name: Instrumentation checks part 2
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
-        arch: [x86_64, arm64-v8a]
-        api-level: [24, 35]
+        arch: [arm64-v8a]
+        api-level: [35]
     steps:
       - name: Checkout (recursive)
         uses: actions/checkout@v4
@@ -55,13 +55,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '21'
-
-      - name: Enable KVM
-        continue-on-error: true
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
       - name: Run instrumentation checks
         uses: reactivecircus/android-emulator-runner@v2
         with:
