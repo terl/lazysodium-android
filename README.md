@@ -7,7 +7,9 @@ Lazysodium is a **complete** Android implementation of the [Libsodium](https://g
 [![Checks](https://github.com/terl/lazysodium-android/actions/workflows/primary.yml/badge.svg)](https://github.com/terl/lazysodium-android/actions/workflows/primary.yml)
 ![Maven Central](https://img.shields.io/maven-central/v/com.goterl/lazysodium-android?color=%23fff&label=Maven%20Central)
 
-## Why Lazysodium
+**Note: Min SDK of 24 required**
+
+## About
 We created Lazysodium because we really wanted a solid Libsodium compatible Java/Android library that would just work without fuss. We were exasperated and annoyed with current Libsodium implementations as some of them were just poorly maintained and poorly architected.
 
 You can find more info [here](https://github.com/terl/lazysodium-java/wiki/about).
@@ -37,7 +39,7 @@ repositories {
 // Project level dependencies section
 dependencies {
     implementation "com.goterl:lazysodium-android:VERSION_NUMBER@aar"
-    implementation "net.java.dev.jna:jna:5.8.0@aar"
+    implementation "net.java.dev.jna:jna:5.17.0@aar"
 }
 ```
 
