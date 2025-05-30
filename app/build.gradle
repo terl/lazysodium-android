@@ -83,6 +83,7 @@ android {
 
     packagingOptions {
         exclude '../lazysodium-java/src/test/java'
+        jniLibs.keepDebugSymbols.add("**/libsodium.so")
     }
 
     testOptions {
