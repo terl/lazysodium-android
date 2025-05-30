@@ -12,13 +12,14 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
     id 'signing'
+    id 'org.jreleaser' version '1.18.0'
     id 'org.jetbrains.kotlin.android'
 }
 
 ext {
     artifactId = "lazysodium-android"
     groupId = "com.goterl"
-    version = '5.1.1'
+    version = '5.2.0'
     description = "Lazysodium (Android) makes it effortless for Android " +
             "developers to get started with Libsodium's cryptography."
     androidTestDir = "src/androidTest/java/com/goterl/lazysodium"
