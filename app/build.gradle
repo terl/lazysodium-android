@@ -11,8 +11,8 @@ import java.security.Signature
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    id 'signing'
     id 'org.jreleaser' version '1.18.0'
+    id 'signing'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -238,6 +238,17 @@ Closure createPomClosure = {
 }
 
 jreleaser {
+    gitRootSearch = true
+    project {
+        name = "lazysodium-android"
+        languages {
+            java {
+                groupId = 'com.goterl'
+                artifactId = "lazysodium-android"
+                mainModule = "com.goterl.lazysodium"
+            }
+        }
+    }
     signing {
         active = 'ALWAYS'
         mode = 'FILE'
@@ -263,10 +274,10 @@ jreleaser {
                     active = 'RELEASE'
                     url = 'https://central.sonatype.com/api/v1/publisher'
                     applyMavenCentralRules = true
+                    verifyPom = false
                     stagingRepository('build/staging-deploy')
                     username = getSonatypeUserName()
                     password = getSonatypePassword()
-                    namespace = 'com.goterl'
                 }
             }
             nexus2 {
